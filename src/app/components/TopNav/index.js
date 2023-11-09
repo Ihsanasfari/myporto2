@@ -10,7 +10,7 @@ function TopNav() {
   const isHomePage = pathname === "/";
 
   return (
-    <nav className="flex justify-center sticky top-0 z-10 border text-neutral-700 bg-white">
+    <nav className="flex justify-center sticky top-0 z-10  text-neutral-700 bg-white">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between md:flex-nowrap w-full  border-b border-neutral-50 p-6">
         <Link href="/">Ihsan Asfari</Link>
 
