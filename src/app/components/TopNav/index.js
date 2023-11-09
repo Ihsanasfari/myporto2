@@ -18,7 +18,7 @@ function TopNav() {
           <div className="flex items-center gap-4  mx-10 flex-wrap font-semibold ">
             <Scroll
               className="cursor-pointer hover:text-cyan-500  "
-              to="About"
+              to="about"
               spy={true}
               smooth={true}
               offset={-300}
@@ -32,7 +32,7 @@ function TopNav() {
               to="projects"
               spy={true}
               smooth={true}
-              offset={-200}
+              offset={-60}
               duration={500}
             >
               Projects
@@ -42,7 +42,7 @@ function TopNav() {
               to="experiences"
               spy={true}
               smooth={true}
-              offset={-100}
+              offset={-50}
               duration={500}
             >
               Experiences
