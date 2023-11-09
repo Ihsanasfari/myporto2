@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "description": "Tekos is a new startup in the form of a website application that will serve as a platform for Telkom University students to find accommodation after leaving the dormitory. Students can enjoy the convenience and assurance of having a place to live after the dormitory.",
+        "projectName": "Tekos(Telyu Kos)",
+        "buildWith": "React, Tailwind, Redux",
+        "year": 2023,
+        "githubLink": "https://github.com/sample-project-1",
+        "demoLink": "https://demo.sample-project-1.com",
+        "images": [
+            "../images/tekos1.webp",
+            "../images/tekos2.webp",
+            "../images/tekos3.webp"
+        ]
+    },
+    {
+        "id": 2,
+        "description": "This is affiliate",
+        "projectName": "Affiliate",
+        "buildWith": "NextJs, Tailwind",
+        "year": 2023,
+        "githubLink": "https://github.com/sample-project-2",
+        "demoLink": "https://demo.sample-project-2.com",
+        "images": [
+            "../images/affiliate1.webp",
+            "../images/affiliate2.webp"
+        ]
+      }
+    ]
