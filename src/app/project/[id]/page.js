@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { BiLogoGithub, BiLink } from "react-icons/bi";
+
 const Page = ({ searchParams }) => {
   const projectData = searchParams;
   return (
@@ -111,14 +112,14 @@ const Page = ({ searchParams }) => {
 
           <div className="flex gap-2">
             <Link
-              className="flex items-center justify-center p-1 bg-blue-800 rounded-lg text-base gap-2 "
+              className="flex items-center  justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
               href={projectData.githubLink}
             >
               <span>Github</span>
               <BiLogoGithub className="w-6 h-6" />
             </Link>
             <Link
-              className="flex items-center justify-center p-1 bg-blue-800 rounded-lg text-base gap-2 "
+              className="flex items-center justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
               href={projectData.demoLink}
             >
               <span>Live Demo</span>

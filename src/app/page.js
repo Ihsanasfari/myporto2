@@ -1,12 +1,14 @@
 import Image from "next/image";
-import TopNav from "./components/TopNav";
 import myprofile from "/public/images/profile card.webp";
 import { MdOutlineMaximize } from "react-icons/md";
 import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import { BiArrowFromTop } from "react-icons/bi";
 import Link from "next/link";
 import ProjectList from "./components/ProjectList";
+
 export default function Home() {
+  const fileUrl = "/public/file/Ihsan Asfari Hanifan.pdf";
+  const filename = "Ihsan Asfari Hanivan.pdf";
   return (
     <>
       <main className=" flex min-h-screen flex-col items-center justify-between  text-black  ">
@@ -31,11 +33,17 @@ export default function Home() {
                   out my portfolio for my latest projects.
                 </span>
               </div>
-              <div className="flex gap-2 w-60 items-center justify-center  rounded-xl px-2 py-4 mt-5 text-base cursor-pointer transition ease-in-out delay-150 bg-primary4 hover:bg-indigo-500 hover:-translate-y-1 hover:scale-110  duration-300 text-white">
+              <Link
+                target="_blank"
+                href={
+                  "https://drive.google.com/file/d/1s0_Rq70JXFS-ZS-kG2QKlceIZW0_QS60/view?usp=sharing"
+                }
+                className="flex gap-2 w-60 items-center justify-center  rounded-xl px-2 py-4 mt-5 text-base cursor-pointer transition ease-in-out delay-150 bg-primary4 hover:bg-primary5 hover:-translate-y-1 hover:scale-110  duration-300 text-white"
+              >
                 <p>Download My CV</p>
 
                 <BiArrowFromTop className="text-2xl transform transition-transform" />
-              </div>
+              </Link>
             </div>
             <div className="flex items-center gap-4 pt-32">
               <p>Check Out My </p>
@@ -97,14 +105,32 @@ export default function Home() {
             </h1>
           </div>
         </div>
-        <footer className="flex flex-col gap-4 items-center justify-center w-full py-10">
+        <footer className="flex flex-col gap-2 items-center justify-center w-full py-10">
           <span>build with</span>
           <div className="flex items-center gap-4 text-primary4">
-            <Link target="_blank" href={"https://nextjs.org/"}>
+            <Link
+              className="hover:underline hover:underline-offset-2 decoration-primary5"
+              target="_blank"
+              href={"https://nextjs.org/"}
+            >
               Next.js
             </Link>
-            <Link target="_blank" href={"https://tailwindcss.com/"}>
+            <Link
+              className="hover:underline hover:underline-offset-2 decoration-primary5"
+              target="_blank"
+              href={"https://tailwindcss.com/"}
+            >
               Tailwind CSS
+            </Link>
+          </div>
+          <div className="flex gap-2">
+            <span>deployed to</span>
+            <Link
+              className="hover:underline hover:underline-offset-2 text-primary4 decoration-primary5"
+              target="_blank"
+              href={"https://vercel.com/"}
+            >
+              Vercel
             </Link>
           </div>
         </footer>
