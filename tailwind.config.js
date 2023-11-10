@@ -12,7 +12,7 @@ module.exports = withMT({
         primary1: "#FFFFFF",
         primary2: "#FCDA69",
         primary3: "#18171C",
-        primary4: "#8873f0"
+        primary4: "#8873f0",
         primary5: "#B9F2FE"
       }
     }
