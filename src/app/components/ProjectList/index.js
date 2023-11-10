@@ -8,7 +8,7 @@ const ProjectList = async () => {
       {projectData.map((project) => {
         return (
           <div className="flex flex-col gap-5  " key={project.id}>
-            <hr class="h-[2px] my-2 bg-primary3 border-0 " />
+            <hr className="h-[2px] my-2 bg-primary3 border-0 " />
             <div className="flex flex-col gap-2">
               <h1 className="text-4xl font-bold">{project.projectName}</h1>
               <h2 className="text-lg">{project.buildWith}</h2>
