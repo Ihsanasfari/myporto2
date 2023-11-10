@@ -10,14 +10,14 @@ function TopNav() {
   const isHomePage = pathname === "/";
 
   return (
-    <nav className="flex justify-center sticky top-0 z-10  text-neutral-700 bg-white">
+    <nav className="flex justify-center sticky top-0 z-10  text-neutral-700 bg-white text-primary3">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between md:flex-nowrap w-full  border-b border-neutral-50 p-6">
         <Link href="/">Ihsan Asfari</Link>
 
         {isHomePage ? (
           <div className="flex items-center gap-4  mx-10 flex-wrap font-semibold ">
             <Scroll
-              className="cursor-pointer hover:text-cyan-500  "
+              className="cursor-pointer hover:text-primary4  "
               to="about"
               spy={true}
               smooth={true}
@@ -28,7 +28,7 @@ function TopNav() {
             </Scroll>
 
             <Scroll
-              className="cursor-pointer hover:text-cyan-500 "
+              className="cursor-pointer hover:text-primary4 "
               to="projects"
               spy={true}
               smooth={true}
@@ -38,7 +38,7 @@ function TopNav() {
               Projects
             </Scroll>
             <Scroll
-              className="cursor-pointer hover:text-cyan-500 "
+              className="cursor-pointer hover:text-primary4 "
               to="experiences"
               spy={true}
               smooth={true}
@@ -51,7 +51,7 @@ function TopNav() {
         ) : (
           <div className="flex items-center gap-4  mx-10 flex-wrap">
             <Link
-              className="flex  items-center gap-2 cursor-pointer hover:text-cyan-500 "
+              className="flex  items-center gap-2 cursor-pointer hover:text-primary4 "
               href="/"
             >
               <IoArrowBackOutline />

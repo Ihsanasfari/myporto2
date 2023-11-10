@@ -6,7 +6,7 @@ import { BiLogoGithub, BiLink } from "react-icons/bi";
 const Page = ({ searchParams }) => {
   const projectData = searchParams;
   return (
-    <div className="flex flex-col gap-y-12 items-center justify-center py-40 text-white">
+    <div className="flex flex-col gap-y-12 min-h-screen items-center justify-center py-40 text-primary1 bg-primary3">
       <span className="w-[670px] text-center text-xl">
         {projectData.description}
       </span>

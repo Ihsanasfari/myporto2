@@ -5,8 +5,8 @@
         "projectName": "Tekos(Telyu Kos)",
         "buildWith": "React, Tailwind, Redux",
         "year": 2023,
-        "githubLink": "https://github.com/sample-project-1",
-        "demoLink": "https://demo.sample-project-1.com",
+        "githubLink": "https://github.com/Ihsanasfari/tekos-fe-react-github",
+        "demoLink": "https://tekos-fe-react-github-demo.vercel.app/",
         "images": [
             "../images/tekos1.webp",
             "../images/tekos2.webp",

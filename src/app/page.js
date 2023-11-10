@@ -9,7 +9,6 @@ import ProjectList from "./components/ProjectList";
 export default function Home() {
   return (
     <>
-      <TopNav />
       <main className=" flex min-h-screen flex-col items-center justify-between  text-black  ">
         <div
           id="about"
@@ -98,6 +97,17 @@ export default function Home() {
             </h1>
           </div>
         </div>
+        <footer className="flex flex-col gap-4 items-center justify-center w-full py-10">
+          <span>build with</span>
+          <div className="flex items-center gap-4 text-primary4">
+            <Link target="_blank" href={"https://nextjs.org/"}>
+              Next.js
+            </Link>
+            <Link target="_blank" href={"https://tailwindcss.com/"}>
+              Tailwind CSS
+            </Link>
+          </div>
+        </footer>
       </main>
     </>
   );
