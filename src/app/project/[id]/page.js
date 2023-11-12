@@ -112,6 +112,7 @@ const Page = ({ searchParams }) => {
 
           <div className="flex gap-2">
             <Link
+              target="_blank"
               className="flex items-center  justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
               href={projectData.githubLink}
             >
@@ -119,6 +120,7 @@ const Page = ({ searchParams }) => {
               <BiLogoGithub className="w-6 h-6" />
             </Link>
             <Link
+              target="_blank"
               className="flex items-center justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
               href={projectData.demoLink}
             >
