@@ -35,7 +35,7 @@ function TopNav() {
               offset={-60}
               duration={500}
             >
-              Projects
+              Project
             </Scroll>
             <Scroll
               className="cursor-pointer hover:text-primary4 "
@@ -45,7 +45,7 @@ function TopNav() {
               offset={-50}
               duration={500}
             >
-              Experiences
+              Skills & Experience
             </Scroll>
           </div>
         ) : (

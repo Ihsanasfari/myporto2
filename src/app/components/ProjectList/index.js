@@ -4,7 +4,7 @@ import Link from "next/link";
 import projectData from "/public/data/projectData.json";
 const ProjectList = async () => {
   return (
-    <div className="grid grid-cols-3 content-center gap-y-5 gap-x-10 text-primary3">
+    <div className="grid grid-cols-4 content-center gap-y-5 gap-x-10 text-primary3">
       {projectData.map((project) => {
         return (
           <div className="flex flex-col gap-5  " key={project.id}>

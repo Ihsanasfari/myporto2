@@ -2,21 +2,25 @@ import Image from "next/image";
 import myprofile from "/public/images/profile card.webp";
 import { MdOutlineMaximize } from "react-icons/md";
 import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
-import { BiArrowFromTop } from "react-icons/bi";
+import { BiArrowFromTop, BiLogoReact, BiLogoTailwindCss } from "react-icons/bi";
+import { TbBrandNextjs } from "react-icons/tb";
+import { SiBootstrap, SiCodeigniter } from "react-icons/si";
+import { RiJavascriptLine } from "react-icons/ri";
 import Link from "next/link";
 import ProjectList from "./components/ProjectList";
+import ExperienceList from "./ExperienceList";
 
 export default function Home() {
   const fileUrl = "/public/file/Ihsan Asfari Hanifan.pdf";
   const filename = "Ihsan Asfari Hanivan.pdf";
   return (
     <>
-      <main className=" flex min-h-screen flex-col items-center justify-between  text-black  ">
+      <main className=" flex min-h-screen flex-col items-center justify-between  text-primary3  ">
         <div
           id="about"
-          className="flex justify-between  w-full h-[900px] py-10 bg-white"
+          className="flex justify-between  w-full h-fit py-14 bg-white px-32"
         >
-          <div className="flex flex-col justify-center  w-3/4 px-28 ">
+          <div className="flex flex-col justify-center  w-3/4  ">
             <div className="flex flex-col gap-12 ">
               <h1 className="text-8xl font-bold">
                 Thank you <br />
@@ -36,7 +40,7 @@ export default function Home() {
               <Link
                 target="_blank"
                 href={
-                  "https://drive.google.com/file/d/1s0_Rq70JXFS-ZS-kG2QKlceIZW0_QS60/view?usp=sharing"
+                  "https://drive.google.com/file/d/1niZWzrEul-SyJ1L-foQeDR9qBCjV2yOW/view?usp=sharing"
                 }
                 className="flex gap-2 w-60 items-center justify-center  rounded-xl px-2 py-4 mt-5 text-base cursor-pointer transition ease-in-out delay-150 bg-primary4 hover:bg-primary5 hover:-translate-y-1 hover:scale-110  duration-300 text-white"
               >
@@ -88,8 +92,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div id="projects" className="flex w-full h-[900px] py-10 bg-primary2">
-          <div className="flex flex-col gap-10 px-28 ">
+        <div id="projects" className="flex w-full  py-32 bg-primary2 ">
+          <div className="flex flex-col gap-10  px-32">
             <h1 className="text-8xl font-bold">
               My <br />
               Project
@@ -97,41 +101,96 @@ export default function Home() {
             <ProjectList />
           </div>
         </div>
-        <div id="experiences" className="flex w-full h-[900px] py-10 ">
-          <div className="flex flex-col gap-10 px-28 ">
+        <div
+          id="experiences"
+          className="flex justify-between w-full py-28  px-32"
+        >
+          <div className="flex flex-col gap-10  w-3/4">
             <h1 className="text-8xl font-bold">
-              My <br />
-              Experiences
+              Skills & <br />
+              Experience
             </h1>
+
+            <div className="flex flex-col ">
+              <h2 className="text-4xl font-semibold pb-8">Skills</h2>
+
+              <div className="grid grid-cols-3 gap-10 w-1/2">
+                <div className="flex flex-col gap-4 items-center ">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
+                    <BiLogoReact />
+                  </div>
+                  <span>React JS</span>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl ">
+                    <TbBrandNextjs />
+                  </div>
+                  <span>Next JS</span>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
+                    <BiLogoTailwindCss />
+                  </div>
+                  <span>Tailwind CSS</span>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
+                    <SiCodeigniter />
+                  </div>
+                  <span>CodeIgniter3</span>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
+                    <SiBootstrap />
+                  </div>
+                  <span>Bootstrap</span>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
+                    <RiJavascriptLine />
+                  </div>
+
+                  <span>JavaScript</span>
+                </div>
+              </div>
+            </div>
           </div>
+          <ExperienceList />
         </div>
-        <footer className="flex flex-col gap-2 items-center justify-center w-full py-10">
-          <span>build with</span>
-          <div className="flex items-center gap-4 text-primary4">
-            <Link
-              className="hover:underline hover:underline-offset-2 decoration-primary5"
-              target="_blank"
-              href={"https://nextjs.org/"}
-            >
-              Next.js
-            </Link>
-            <Link
-              className="hover:underline hover:underline-offset-2 decoration-primary5"
-              target="_blank"
-              href={"https://tailwindcss.com/"}
-            >
-              Tailwind CSS
-            </Link>
-          </div>
-          <div className="flex gap-2">
-            <span>deployed to</span>
-            <Link
-              className="hover:underline hover:underline-offset-2 text-primary4 decoration-primary5"
-              target="_blank"
-              href={"https://vercel.com/"}
-            >
-              Vercel
-            </Link>
+        <footer className="flex flex-col  gap-2  w-full py-10 px-32">
+          <hr className="h-[2px] my-2 bg-primary3 border-0 " />
+          <div className="flex justify-between font-semibold">
+            <span>ihsanasfarih@gmail.com</span>
+            <div className="flex gap-4">
+              <span>build with</span>
+              <div className="flex items-center gap-4 text-primary4">
+                <Link
+                  className="hover:underline hover:underline-offset-2 decoration-primary5"
+                  target="_blank"
+                  href={"https://nextjs.org/"}
+                >
+                  Next.js
+                </Link>
+                <Link
+                  className="hover:underline hover:underline-offset-2 decoration-primary5"
+                  target="_blank"
+                  href={"https://tailwindcss.com/"}
+                >
+                  Tailwind CSS
+                </Link>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <span>deployed to</span>
+
+              <Link
+                className="hover:underline hover:underline-offset-2 text-primary4 decoration-primary5"
+                target="_blank"
+                href={"https://vercel.com/"}
+              >
+                Vercel
+              </Link>
+            </div>
           </div>
         </footer>
       </main>

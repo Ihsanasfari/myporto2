@@ -1,6 +1,14 @@
 [
     {
         "id" : "1",
+        "experienceName" : "Tekos",
+        "role": "Front-end Developer",
+        "description": "",
+        "year" : "Sep 2022 - Aug 2023",
+        "image" : "../images/iflab.webp"
+    },
+    {
+        "id" : "2",
         "experienceName" : "Informatics Lab",
         "role": "Practicum Assistant of Web Development",
         "description": "",
@@ -11,7 +19,7 @@
         "id" : "2",
         "experienceName" : "Badan Amil Zakat Nasional (BAZNAS)",
         "role": "Database Developer",
-        "description": "As Database Developer",
+        "description": "Database Developer Intern",
         "year" : "Jun 2022 - Aug 2022",
         "image" : "../images/baznas.webp"
     }
