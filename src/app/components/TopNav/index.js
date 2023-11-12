@@ -32,7 +32,7 @@ function TopNav() {
               to="projects"
               spy={true}
               smooth={true}
-              offset={-60}
+              offset={-40}
               duration={500}
             >
               Project

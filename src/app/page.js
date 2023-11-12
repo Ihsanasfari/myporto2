@@ -11,32 +11,29 @@ import ProjectList from "./components/ProjectList";
 import ExperienceList from "./ExperienceList";
 
 export default function Home() {
-  const fileUrl = "/public/file/Ihsan Asfari Hanifan.pdf";
-  const filename = "Ihsan Asfari Hanivan.pdf";
   return (
     <>
       <main className=" flex min-h-screen flex-col items-center justify-between  text-primary3  ">
         <div
           id="about"
-          className="flex justify-between  w-full h-fit py-14 bg-white px-32"
+          className="flex flex-col-reverse gap-4 lg:flex-row justify-between items-center lg:items-start  w-full h-fit py-14 bg-white px-4 lg:px-32"
         >
-          <div className="flex flex-col justify-center  w-3/4  ">
-            <div className="flex flex-col gap-12 ">
-              <h1 className="text-8xl font-bold">
+          <div className="flex flex-col justify-center  w-3/4">
+            <div className="flex flex-col gap-4 xl:gap-12 justify-center   items-center lg:items-start">
+              <h1 className="text-4xl xl:text-5xl 2xl:text-8xl font-bold text-center lg:text-start">
                 Thank you <br />
                 For visiting <br />
                 My portofolio
               </h1>
-              <div className="flex gap-4">
-                <MdOutlineMaximize className="w-40 h-16" />
-                <span>
-                  Hi! I'm a recent Telkom University graduate with a degree in
-                  Software Engineering, passionate about front-end development.
-                  I have experience working with React.js, Next.js, and Redux,
-                  and I'm dedicated to creating engaging web experiences. Check
-                  out my portfolio for my latest projects.
-                </span>
-              </div>
+
+              <span>
+                Hi! I'm a recent Telkom University graduate with a degree in
+                Software Engineering, passionate about front-end development. I
+                have experience working with React.js, Next.js, and Redux, and
+                I'm dedicated to creating engaging web experiences. Check out my
+                portfolio for my latest projects.
+              </span>
+
               <Link
                 target="_blank"
                 href={
@@ -49,7 +46,7 @@ export default function Home() {
                 <BiArrowFromTop className="text-2xl transform transition-transform" />
               </Link>
             </div>
-            <div className="flex items-center gap-4 pt-32">
+            <div className="flex flex-col lg:flex-row items-center gap-4 pt-10 xl:pt-20 2xl:pt-36">
               <p>Check Out My </p>
               <div className="flex items-center gap-4 p-2 text-2xl">
                 <Link
@@ -76,14 +73,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" group flex flex-col gap-14 w-full  bg-primary2 border-2 border-primary3  items-center justify-center">
-            <span className="text-2xl font-semibold">
+          <div className=" group flex flex-col gap-4 xl:gap-14 w-full  bg-primary2 border-2 border-primary3  items-center justify-center p-4 xl:p-10">
+            <span className="lg:text-2xl font-semibold">
               " Power isn't determined by your size, <br />
               but the size of your heart and dreams! "
             </span>
-            <div className="flex items-center justify-center p-20 rounded-full bg-[#e0ddd8] bg-opacity-60 ">
+            <div className="flex items-center justify-center p-16 xl:p-20 rounded-full bg-[#e0ddd8] bg-opacity-60 ">
               <Image
-                className="animate-none"
+                className="animate-none w-60 xl:w-[400px]"
                 width={400}
                 height={300}
                 src={myprofile}
@@ -92,9 +89,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div id="projects" className="flex w-full  py-32 bg-primary2 ">
-          <div className="flex flex-col gap-10  px-32">
-            <h1 className="text-8xl font-bold">
+        <div
+          id="projects"
+          className="flex w-full justify-center py-32 bg-primary2 "
+        >
+          <div className="flex flex-col gap-10  px-4 lg:px-32">
+            <h1 className="text-4xl xl:text-5xl 2xl:text-8xl font-bold">
               My <br />
               Project
             </h1>
@@ -103,10 +103,10 @@ export default function Home() {
         </div>
         <div
           id="experiences"
-          className="flex justify-between w-full py-28  px-32"
+          className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-start justify-center lg:justify-between w-full py-28  px-8 lg:px-32"
         >
-          <div className="flex flex-col gap-10  w-3/4">
-            <h1 className="text-8xl font-bold">
+          <div className="flex flex-col gap-10 lg:w-3/4">
+            <h1 className="text-4xl xl:text-5xl 2xl:text-8xl font-bold">
               Skills & <br />
               Experience
             </h1>
@@ -114,7 +114,7 @@ export default function Home() {
             <div className="flex flex-col ">
               <h2 className="text-4xl font-semibold pb-8">Skills</h2>
 
-              <div className="grid grid-cols-3 gap-10 w-1/2">
+              <div className="grid grid-cols-3 gap-10 w-full lg:w-1/2">
                 <div className="flex flex-col gap-4 items-center ">
                   <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
                     <BiLogoReact />
@@ -157,9 +157,9 @@ export default function Home() {
           </div>
           <ExperienceList />
         </div>
-        <footer className="flex flex-col  gap-2  w-full py-10 px-32">
+        <footer className="flex flex-col  gap-2  w-full py-10 px-4 lg:px-32">
           <hr className="h-[2px] my-2 bg-primary3 border-0 " />
-          <div className="flex justify-between font-semibold">
+          <div className="flex flex-col lg:flex-row justify-between font-semibold">
             <span>ihsanasfarih@gmail.com</span>
             <div className="flex gap-4">
               <span>build with</span>

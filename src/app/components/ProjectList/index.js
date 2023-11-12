@@ -4,10 +4,10 @@ import Link from "next/link";
 import projectData from "/public/data/projectData.json";
 const ProjectList = async () => {
   return (
-    <div className="grid grid-cols-4 content-center gap-y-5 gap-x-10 text-primary3">
+    <div className="grid  lg:grid-cols-2 2xl:grid-cols-4 content-center gap-y-5 gap-x-10 text-primary3">
       {projectData.map((project) => {
         return (
-          <div className="flex flex-col gap-5  " key={project.id}>
+          <div className="flex flex-col gap-5 " key={project.id}>
             <hr className="h-[2px] my-2 bg-primary3 border-0 " />
             <div className="flex flex-col gap-2">
               <h1 className="text-4xl font-bold">{project.projectName}</h1>
@@ -29,7 +29,7 @@ const ProjectList = async () => {
               }}
               style={{ backgroundImage: `url(${project.images[0]})` }}
               id={project.id}
-              className="flex rounded-md  w-[400px] h-[260px] items-center justify-center cursor-pointer  bg-cover bg-center relative overflow-hidden"
+              className="flex rounded-md w-[340px] lg:w-[400px] h-[260px] items-center justify-center cursor-pointer  bg-cover bg-center relative overflow-hidden"
             >
               <div className="flex items-center justify-center group absolute inset-0 transition-all  ease-in-out duration-300 hover:bg-primary3 hover:bg-opacity-95">
                 <span className="text-primary1 opacity-0 group-hover:opacity-100 ease-in-out duration-1000">
