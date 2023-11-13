@@ -82,7 +82,7 @@ const Page = ({ searchParams }) => {
         >
           {projectData.images.map((image) => {
             return (
-              <Image
+              <img
                 key={image}
                 width={500}
                 height={1}
