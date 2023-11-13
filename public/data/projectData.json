@@ -8,9 +8,10 @@
         "githubLink": "https://github.com/Ihsanasfari/tekos-fe-react-github",
         "demoLink": "https://tekos-fe-react-github-demo.vercel.app/",
         "images": [
-            "../images/tekos1.webp",
-            "../images/tekos2.webp",
-            "../images/tekos3.webp"
+            "./../images/tekos1.webp",
+            "./../images/tekos2.webp",
+            "./../images/tekos3.webp"
+           
         ]
     },
     {
