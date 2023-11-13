@@ -11,7 +11,18 @@ const Page = ({ searchParams }) => {
       <span className="w-[670px] text-center text-xl">
         {projectData.description}
       </span>
-
+      {projectData.images.map((image) => {
+        return (
+          <Image
+            key={image}
+            width={500}
+            height={1}
+            src={`/${image}`}
+            alt="image"
+            className="h-full w-full object-contain"
+          />
+        );
+      })}
       <div className="flex gap-x-10 border p-2 w-[900px] rounded-xl black h-fit">
         <Carousel
           color="black"
@@ -86,7 +97,7 @@ const Page = ({ searchParams }) => {
                 key={image}
                 width={500}
                 height={1}
-                src={`./${image}`}
+                src={`/${image}`}
                 alt="image"
                 className="h-full w-full object-contain"
               />
