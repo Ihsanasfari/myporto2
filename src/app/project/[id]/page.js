@@ -86,7 +86,7 @@ const Page = ({ searchParams }) => {
                 key={image}
                 width={500}
                 height={1}
-                src={`/${image}`}
+                src={`./${image}`}
                 alt="image"
                 className="h-full w-full object-contain"
               />

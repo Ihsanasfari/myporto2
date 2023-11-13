@@ -7,7 +7,7 @@ const ExperienceList = () => {
       {experienceData.map((data) => {
         return (
           <>
-            <hr className="h-[2px] my-2 bg-primary3 border-0 " />
+            <hr key={data.id} className="h-[2px] my-2 bg-primary3 border-0 " />
             <div className="py-4 flex gap-8">
               <span className="font-semibold">{data.year}</span>
               <div className="flex flex-col gap-4 w-3/5 ">
