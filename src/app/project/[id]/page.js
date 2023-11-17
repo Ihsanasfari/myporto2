@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { BiLogoGithub, BiLink } from "react-icons/bi";
@@ -85,7 +84,7 @@ const Page = ({ searchParams }) => {
               <img
                 key={image}
                 width={500}
-                height={1}
+                height={500}
                 src={`/${image}`}
                 alt="image"
                 className="h-full w-full object-contain"
