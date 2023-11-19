@@ -17,14 +17,29 @@
     {
         "id": 2,
         "description": "This is affiliate",
+        "projectName": "CineAnime",
+        "buildWith": "NextJs, Tailwind",
+        "year": 2023,
+        "githubLink": "https://github.com/Ihsanasfari/cineanime",
+        "demoLink": "https://cineanime-five.vercel.app/",
+        "images": [
+            "./../images/cineanime.webp",
+            "./../images/cineanime.webp",
+            "./../images/cineanime.webp"
+           
+        ]
+      },
+    {
+        "id": 2,
+        "description": "This is affiliate",
         "projectName": "Affiliate",
         "buildWith": "NextJs, Tailwind",
         "year": 2023,
         "githubLink": "https://github.com/sample-project-2",
         "demoLink": "https://demo.sample-project-2.com",
         "images": [
-            "../images/affiliate1.webp",
-            "../images/affiliate2.webp"
+            "./../images/affiliate1.webp",
+            "./../images/affiliate2.webp"
         ]
       }
    
