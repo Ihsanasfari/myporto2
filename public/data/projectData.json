@@ -16,7 +16,7 @@
     },
     {
         "id": 2,
-        "description": "CineAnime web is an anime website that serves as the ultimate haven for enthusiasts, offering a meticulously curated platform that lists a plethora of popular anime titles. It goes beyond being a mere directory, providing users with an intuitive search feature for detailed anime information, including plot summaries, character backgrounds, and user reviews. What sets CineAnime apart is its immersive trailer-watching experience, allowing users to preview the essence of each anime through high-quality trailers. Seamlessly combining a comprehensive listing, detailed information retrieval, and an enticing preview feature, CineAnime emerges as the go-to destination for anyone eager to explore, discover, and indulge in the captivating world of Japanese animation.",
+        "description": "CineAnime is an anime website that serves as the ultimate haven for enthusiasts, offering a meticulously curated platform that lists a plethora of popular anime titles. It goes beyond being a mere directory, providing users with an intuitive search feature for detailed anime information, including plot summaries, character backgrounds, and user reviews. What sets CineAnime apart is its immersive trailer-watching experience, allowing users to preview the essence of each anime through high-quality trailers. Seamlessly combining a comprehensive listing, detailed information retrieval, and an enticing preview feature, CineAnime emerges as the go-to destination for anyone eager to explore, discover, and indulge in the captivating world of Japanese animation.",
         "projectName": "CineAnime",
         "buildWith": "NextJs, Tailwind",
         "year": 2023,
