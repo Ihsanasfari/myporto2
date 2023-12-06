@@ -89,11 +89,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div
-          id="projects"
-          className="flex w-full justify-center py-32 bg-primary2 "
-        >
-          <div className="flex flex-col gap-10  px-4 lg:px-32">
+        <div id="projects" className="flex w-full py-32 bg-primary2 ">
+          <div className="flex flex-col gap-10  px-4 lg:px-32 justify-center">
             <h1 className="text-4xl xl:text-5xl 2xl:text-8xl font-bold">
               My <br />
               Project
@@ -103,7 +100,7 @@ export default function Home() {
         </div>
         <div
           id="experiences"
-          className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-center lg:items-start justify-center lg:justify-between w-full py-28  px-8 lg:px-32"
+          className="flex flex-col lg:flex-row gap-8 lg:gap-0  lg:items-start justify-center lg:justify-between w-full py-28  px-8 lg:px-32"
         >
           <div className="flex flex-col gap-10 lg:w-3/4">
             <h1 className="text-4xl xl:text-5xl 2xl:text-8xl font-bold">

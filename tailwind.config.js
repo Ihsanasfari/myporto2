@@ -14,7 +14,13 @@ module.exports = withMT({
         primary3: "#18171C",
         primary4: "#8873f0",
         primary5: "#B9F2FE"
+      },
+      screens: {
+        "3xl": "1700px"
       }
+    },
+    screens: {
+      "2xl": "1450px"
     }
   },
   plugins: []
