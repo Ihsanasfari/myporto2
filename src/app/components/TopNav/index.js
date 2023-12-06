@@ -16,12 +16,14 @@ function TopNav() {
     <nav className="border flex justify-center sticky top-0 z-10  text-neutral-700 bg-white text-primary3">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between lg:flex-nowrap w-full   p-6">
         <Link href="/">Ihsan Asfari</Link>
-        <button
-          className="lg:hidden hover:bg-primary3 hover:bg-opacity-25 transition-all ease-in-out p-2 rounded-full"
-          onClick={() => setOpen(!open)}
-        >
-          <RxHamburgerMenu size={22} />
-        </button>
+        {isHomePage ? (
+          <button
+            className="lg:hidden hover:bg-primary3 hover:bg-opacity-25 transition-all ease-in-out p-2 rounded-full"
+            onClick={() => setOpen(!open)}
+          >
+            <RxHamburgerMenu size={22} />
+          </button>
+        ) : null}
         {isHomePage ? (
           <div
             className={`${

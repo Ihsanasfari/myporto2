@@ -6,12 +6,12 @@ import { BiLogoGithub, BiLink } from "react-icons/bi";
 const Page = ({ searchParams }) => {
   const projectData = searchParams;
   return (
-    <div className="flex flex-col gap-y-12 min-h-screen items-center justify-center py-40 text-primary1 bg-primary3">
-      <span className="w-[670px] text-center text-xl">
+    <div className="flex flex-col gap-y-12 min-h-screen items-center justify-center lg:py-40 text-primary1 bg-primary3 py-10 px-10 lg:px-0">
+      <span className=" text-left lg:w-[670px] lg:text-center text-sm lg:text-xl">
         {projectData.description}
       </span>
 
-      <div className="flex gap-x-10 border p-2 w-[900px] rounded-xl black h-fit">
+      <div className="flex flex-col lg:flex-row items-center gap-x-10 border p-2 lg:w-[900px] rounded-xl black h-fit">
         <Carousel
           color="black"
           prevArrow={({ handlePrev }) => (
@@ -62,7 +62,7 @@ const Page = ({ searchParams }) => {
               </svg>
             </IconButton>
           )}
-          className="rounded-xl w-[500px] h-[360px] bg-white"
+          className="rounded-xl h-60 lg:w-[500px] lg:h-[360px] bg-white"
           navigation={({ setActiveIndex, activeIndex, length }) => (
             <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2 ">
               {new Array(length).fill("").map((_, i) => (
