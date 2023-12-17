@@ -1,7 +1,8 @@
+"use client";
 import Image from "next/image";
 import myprofile from "/public/images/profile card.webp";
-import { MdOutlineMaximize } from "react-icons/md";
-import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import { HiOutlineMail } from "react-icons/hi";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { BiArrowFromTop, BiLogoReact, BiLogoTailwindCss } from "react-icons/bi";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiBootstrap, SiCodeigniter } from "react-icons/si";
@@ -9,8 +10,15 @@ import { RiJavascriptLine } from "react-icons/ri";
 import Link from "next/link";
 import ProjectList from "./components/ProjectList";
 import ExperienceList from "./ExperienceList";
+import Modal from "./components/Modal";
+import { useState } from "react";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = (event) => {
+    setIsOpen(true);
+  };
+
   return (
     <>
       <main className=" flex min-h-screen flex-col items-center justify-between  text-primary3  ">
@@ -37,7 +45,7 @@ export default function Home() {
               <Link
                 target="_blank"
                 href={
-                  "https://drive.google.com/file/d/1niZWzrEul-SyJ1L-foQeDR9qBCjV2yOW/view?usp=sharing"
+                  "https://drive.google.com/file/d/1m9ergnHBABdPyhYb2Z3xrLqO00mhliM5/view?usp=sharing"
                 }
                 className="flex gap-2 w-60 items-center justify-center  rounded-xl px-2 py-4 mt-5 text-base cursor-pointer transition ease-in-out delay-150 bg-primary4 hover:bg-primary5 hover:-translate-y-1 hover:scale-110  duration-300 text-white"
               >
@@ -63,13 +71,13 @@ export default function Home() {
                 >
                   <AiFillGithub />
                 </Link>
-                <Link
-                  className="flex p-4 rounded-full  bg-[#e0ddd8] bg-opacity-50 transition-colors duration-300 ease-in-out items-center hover:bg-opacity-90"
+                <button
+                  className="flex p-4 rounded-full  bg-[#e0ddd8] bg-opacity-50 transition-colors duration-300 ease-in-out items-center hover:bg-opacity-90 cursor-pointer"
                   target="_blank"
-                  href={`https://github.com/Ihsanasfari?tab=repositories`}
+                  onClick={handleOpen}
                 >
-                  <AiFillInstagram />
-                </Link>
+                  <HiOutlineMail />
+                </button>
               </div>
             </div>
           </div>
@@ -191,6 +199,9 @@ export default function Home() {
           </div>
         </footer>
       </main>
+      {isOpen == true ? (
+        <Modal text={"my email was copied to your clipboard!"} />
+      ) : null}
     </>
   );
 }
