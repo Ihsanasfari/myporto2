@@ -10,14 +10,14 @@ import { RiJavascriptLine } from "react-icons/ri";
 import Link from "next/link";
 import ProjectList from "./components/ProjectList";
 import ExperienceList from "./ExperienceList";
-import Modal from "./components/Modal";
+// import Modal from "./components/Modal";
 import { useState } from "react";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleOpen = (event) => {
-    setIsOpen(true);
-  };
+  // const [isOpen, setIsOpen] = useState(false);
+  // const handleOpen = (event) => {
+  //   setIsOpen(true);
+  // };
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function Home() {
                 <button
                   className="flex p-4 rounded-full  bg-[#e0ddd8] bg-opacity-50 transition-colors duration-300 ease-in-out items-center hover:bg-opacity-90 cursor-pointer"
                   target="_blank"
-                  onClick={handleOpen}
+                  // onClick={handleOpen}
                 >
                   <HiOutlineMail />
                 </button>
@@ -199,9 +199,9 @@ export default function Home() {
           </div>
         </footer>
       </main>
-      {isOpen == true ? (
+      {/* {isOpen == true ? (
         <Modal text={"my email was copied to your clipboard!"} />
-      ) : null}
+      ) : null} */}
     </>
   );
 }
