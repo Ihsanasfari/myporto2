@@ -1,46 +1,70 @@
 [
-    {
-        "id": 1,
-        "description": "Tekos is a new startup in the form of a website application that will serve as a platform for Telkom University students to find accommodation after leaving the dormitory. Students can enjoy the convenience and assurance of having a place to live after the dormitory.",
-        "projectName": "Tekos(Telyu Kos)",
-        "buildWith": "React, Tailwind, Redux",
-        "year": 2023,
-        "githubLink": "https://github.com/Ihsanasfari/tekos-fe-react-github",
-        "demoLink": "https://tekos-fe-react-github-demo.vercel.app/",
-        "images": [
-            "./../images/tekos1.webp",
-            "./../images/tekos2.webp",
-            "./../images/tekos3.webp"
-           
-        ]
-    },
-    {
-        "id": 2,
-        "description": "CineAnime is an anime website that serves as the ultimate haven for enthusiasts, offering a meticulously curated platform that lists a plethora of popular anime titles. It goes beyond being a mere directory, providing users with an intuitive search feature for detailed anime information, including plot summaries, character backgrounds, and user reviews. What sets CineAnime apart is its immersive trailer-watching experience, allowing users to preview the essence of each anime through high-quality trailers. Seamlessly combining a comprehensive listing, detailed information retrieval, and an enticing preview feature, CineAnime emerges as the go-to destination for anyone eager to explore, discover, and indulge in the captivating world of Japanese animation.",
-        "projectName": "CineAnime",
-        "buildWith": "NextJs, Tailwind",
-        "year": 2023,
-        "githubLink": "https://github.com/Ihsanasfari/cineanime",
-        "demoLink": "https://cineanime-five.vercel.app/",
-        "images": [
-            "./../images/cineanime.webp",
-            "./../images/cineanime.webp",
-            "./../images/cineanime.webp"
-           
-        ]
-      },
-    {
-        "id": 2,
-        "description": "This is affiliate",
-        "projectName": "Affiliate",
-        "buildWith": "NextJs, Tailwind",
-        "year": 2023,
-        "githubLink": "https://github.com/sample-project-2",
-        "demoLink": "https://demo.sample-project-2.com",
-        "images": [
-            "./../images/affiliate1.webp",
-            "./../images/affiliate2.webp"
-        ]
-      }
-   
+  {
+    "id": 0,
+    "projectName": "Projected AI",
+    "description": "A front-end project focused on developing enterprise-grade AI chatbot applications with advanced Generative AI (Gen AI) features. I led the implementation of responsive and scalable UI components that enable intuitive user interactions. This application was tailored for enterprise needs, integrating robust API communication and real-time user feedback.",
+    "buildWith": "Next.js, Tailwind CSS, Redux, TypeScript",
+    "year": 2024,
+    "githubLink": "",
+    "demoLink": "",
+    "additionalLink": "",
+    "images": [
+      "./../images/projectedAI/projected-ai1.png",
+      "./../images/projectedAI/projected-ai2.png",
+      "./../images/projectedAI/projected-ai3.png",
+      "./../images/projectedAI/projected-ai4.png"
     ]
+  },
+  {
+    "id": 1,
+    "description": "Tekos is a new startup in the form of a website application that will serve as a platform for Telkom University students to find accommodation after leaving the dormitory. Students can enjoy the convenience and assurance of having a place to live after the dormitory.",
+    "projectName": "Tekos(Telyu Kos)",
+    "buildWith": "React, Tailwind, Redux",
+    "year": 2023,
+    "githubLink": "https://github.com/Ihsanasfari/tekos-fe-react-github",
+    "demoLink": "https://tekos-fe-react-github-demo.vercel.app/",
+    "images": [
+      "./../images/tekos1.webp",
+      "./../images/tekos2.webp",
+      "./../images/tekos3.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "description": "CineAnime is an anime website that serves as the ultimate haven for enthusiasts, offering a meticulously curated platform that lists a plethora of popular anime titles. It goes beyond being a mere directory, providing users with an intuitive search feature for detailed anime information, including plot summaries, character backgrounds, and user reviews. What sets CineAnime apart is its immersive trailer-watching experience, allowing users to preview the essence of each anime through high-quality trailers. Seamlessly combining a comprehensive listing, detailed information retrieval, and an enticing preview feature, CineAnime emerges as the go-to destination for anyone eager to explore, discover, and indulge in the captivating world of Japanese animation.",
+    "projectName": "CineAnime",
+    "buildWith": "NextJs, Tailwind",
+    "year": 2023,
+    "githubLink": "https://github.com/Ihsanasfari/cineanime",
+    "demoLink": "https://cineanime-five.vercel.app/",
+    "images": [
+      "./../images/cineanime.webp",
+      "./../images/cineanime.webp",
+      "./../images/cineanime.webp"
+    ]
+  },
+  {
+    "id": 3,
+    "description": "This is affiliate",
+    "projectName": "Affiliate",
+    "buildWith": "NextJs, Tailwind",
+    "year": 2023,
+    "githubLink": "https://github.com/sample-project-2",
+    "demoLink": "https://demo.sample-project-2.com",
+    "images": ["./../images/affiliate1.webp", "./../images/affiliate2.webp"]
+  },
+  {
+    "id": 4,
+    "projectName": "Projected AI Company",
+    "description": "A modern, responsive company profile website built with Next.js, React, and Tailwind CSS. Features include hero section, services overview, project showcase, and contact form with email integration. Built mobile-first and SEO-optimized to strengthen Projected AI's brand presence and user engagement.",
+    "buildWith": "Next.js, React, Tailwind CSS",
+    "year": 2024,
+    "additionalLink": "https://projectedai.au",
+    "images": [
+      "./../images/projectedCompany/companyP-1.png",
+      "./../images/projectedCompany/companyP-2.png",
+      "./../images/projectedCompany/companyP-3.png",
+      "./../images/projectedCompany/companyP-4.png"
+    ]
+  }
+]

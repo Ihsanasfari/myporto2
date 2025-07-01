@@ -5,6 +5,7 @@ import { BiLogoGithub, BiLink } from "react-icons/bi";
 
 const Page = ({ searchParams }) => {
   const projectData = searchParams;
+  console.log("projectData", projectData);
   return (
     <div className="flex flex-col gap-y-12 min-h-screen items-center justify-center lg:py-40 text-primary1 bg-primary3 py-10 px-10 lg:px-0">
       <span className=" text-left lg:w-[670px] lg:text-center text-sm lg:text-xl">
@@ -110,22 +111,36 @@ const Page = ({ searchParams }) => {
           </div>
 
           <div className="flex gap-2">
-            <Link
-              target="_blank"
-              className="flex items-center  justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
-              href={projectData.githubLink}
-            >
-              <span>Github</span>
-              <BiLogoGithub className="w-6 h-6" />
-            </Link>
-            <Link
-              target="_blank"
-              className="flex items-center justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
-              href={projectData.demoLink}
-            >
-              <span>Live Demo</span>
-              <BiLink className="w-6 h-6" />
-            </Link>
+            {projectData.githubLink && (
+              <Link
+                target="_blank"
+                className="flex items-center  justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
+                href={projectData.githubLink}
+              >
+                <span>Github</span>
+                <BiLogoGithub className="w-6 h-6" />
+              </Link>
+            )}
+            {projectData?.demoLink && (
+              <Link
+                target="_blank"
+                className="flex items-center justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
+                href={projectData?.demoLink}
+              >
+                <span>Live Demo</span>
+                <BiLink className="w-6 h-6" />
+              </Link>
+            )}
+            {projectData?.additionalLink && (
+              <Link
+                target="_blank"
+                className="flex items-center justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
+                href={projectData?.additionalLink}
+              >
+                <span>Website Link</span>
+                <BiLink className="w-6 h-6" />
+              </Link>
+            )}{" "}
           </div>
         </div>
       </div>

@@ -35,11 +35,11 @@ export default function Home() {
               </h1>
 
               <span>
-                Hi! I'm a recent Telkom University graduate with a degree in
-                Software Engineering, passionate about front-end development. I
-                have experience working with React.js, Next.js, and Redux, and
-                I'm dedicated to creating engaging web experiences. Check out my
-                portfolio for my latest projects.
+                I am a Front-End Developer with a strong passion for building
+                high-performance, scalable, and user-friendly web applications.
+                With hands-on experience in Next.js, Tailwind CSS, and Redux, I
+                specialize in developing AI chatbot applications with generative
+                AI (Gen AI) capabilities for enterprise clients.
               </span>
 
               <Link
