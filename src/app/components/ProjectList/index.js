@@ -5,15 +5,21 @@ import projectData from "/public/data/projectData.json";
 const ProjectList = async () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 gap-y-8 gap-x-6 text-primary3">
-      {projectData.map((project) => {
+      {projectData?.map((project) => {
         return (
           <div className="flex flex-col gap-4 w-full" key={project?.id}>
             <hr className="h-[2px] my-2 bg-primary3 border-0" />
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              <h1
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold line-clamp-2"
+                title={project?.projectName}
+              >
                 {project?.projectName}
               </h1>
-              <h2 className="text-sm sm:text-base lg:text-lg">
+              <h2
+                className="text-sm sm:text-base lg:text-lg line-clamp-2"
+                title={project?.buildWith}
+              >
                 {project?.buildWith}
               </h2>
             </div>

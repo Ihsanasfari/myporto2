@@ -9,7 +9,7 @@ const Page = ({ searchParams }) => {
   return (
     <div className="flex flex-col gap-y-12 min-h-screen items-center justify-center lg:py-40 text-primary1 bg-primary3 py-10 px-10 lg:px-0">
       <span className=" text-left lg:w-[670px] lg:text-center text-sm lg:text-xl">
-        {projectData.description}
+        {projectData?.description}
       </span>
 
       <div className="flex flex-col lg:flex-row items-center gap-x-10 border p-2 lg:w-[900px] rounded-xl black h-fit">
@@ -80,7 +80,7 @@ const Page = ({ searchParams }) => {
             </div>
           )}
         >
-          {projectData.images.map((image) => {
+          {projectData?.images?.map((image) => {
             return (
               <img
                 key={image}
@@ -99,23 +99,23 @@ const Page = ({ searchParams }) => {
           </div>
           <div className="flex gap-2">
             <h5 className="font-bold">Project Name:</h5>
-            <span>{projectData.projectName}</span>
+            <span>{projectData?.projectName}</span>
           </div>
           <div className="flex gap-2">
             <h5 className="font-bold">Build with:</h5>
-            <span>{projectData.buildWith}</span>
+            <span>{projectData?.buildWith}</span>
           </div>
           <div className="flex gap-2">
             <h5 className="font-bold">Year:</h5>
-            <span>{projectData.year}</span>
+            <span>{projectData?.year}</span>
           </div>
 
           <div className="flex gap-2">
-            {projectData.githubLink && (
+            {projectData?.githubLink && (
               <Link
                 target="_blank"
                 className="flex items-center  justify-center px-3 py-3 bg-primary4 transition-colors duration-300 ease-in-out  hover:bg-opacity-60 rounded-2xl text-sm gap-3 "
-                href={projectData.githubLink}
+                href={projectData?.githubLink}
               >
                 <span>Github</span>
                 <BiLogoGithub className="w-6 h-6" />

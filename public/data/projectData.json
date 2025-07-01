@@ -66,5 +66,14 @@
       "./../images/projectedCompany/companyP-3.png",
       "./../images/projectedCompany/companyP-4.png"
     ]
+  },
+  {
+    "id": 5,
+    "projectName": "Adenco Phase 1",
+    "description": "This portfolio showcases a project management web application developed for Adenco, an Australian company specializing in electrical and instrumentation contracting services across the mining and resources sector. The application includes features such as Daily Diaries for logging daily site activities, Project Setup for configuring WBS and project resources, and Contract IQ — a Generative AI-powered chatbot that enables users to ask questions and get insights about contract details. Built with React, Redux, and Tailwind CSS, the system delivers a responsive UI and efficient data handling through seamless API integration.",
+    "buildWith": "Next.js, Redux, TypeScript, React, Tailwind CSS",
+    "year": 2025,
+    "additionalLink": "https://projectedai.au",
+    "images": ["./../images/adenco/adenco_logo.jpg", " "]
   }
 ]
