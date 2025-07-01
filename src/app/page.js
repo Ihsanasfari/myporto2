@@ -76,13 +76,14 @@ export default function Home() {
                 >
                   <AiFillGithub />
                 </Link>
-                <button
-                  className="flex p-4 rounded-full  bg-[#e0ddd8] bg-opacity-50 transition-colors duration-300 ease-in-out items-center hover:bg-opacity-90 cursor-pointer"
+                <a
+                  href="mailto:ihsanasfarih@gmail.com"
                   target="_blank"
-                  // onClick={handleOpen}
+                  rel="noopener noreferrer"
+                  className="flex p-4 rounded-full bg-[#e0ddd8] bg-opacity-50 transition-colors duration-300 ease-in-out items-center hover:bg-opacity-90 cursor-pointer"
                 >
                   <HiOutlineMail />
-                </button>
+                </a>
               </div>
             </div>
           </div>
