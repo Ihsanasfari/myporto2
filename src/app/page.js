@@ -3,7 +3,12 @@ import Image from "next/image";
 import myprofile from "/public/images/profile card.webp";
 import { HiOutlineMail } from "react-icons/hi";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
-import { BiArrowFromTop, BiLogoReact, BiLogoTailwindCss } from "react-icons/bi";
+import {
+  BiArrowFromTop,
+  BiLogoReact,
+  BiLogoTailwindCss,
+  BiLogoTypescript
+} from "react-icons/bi";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiBootstrap, SiCodeigniter } from "react-icons/si";
 import { RiJavascriptLine } from "react-icons/ri";
@@ -156,6 +161,13 @@ export default function Home() {
                   </div>
 
                   <span>JavaScript</span>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="flex  p-3 bg-primary3 text-white rounded-full text-4xl">
+                    <BiLogoTypescript />
+                  </div>
+
+                  <span>TypeScript</span>
                 </div>
               </div>
             </div>

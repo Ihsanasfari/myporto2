@@ -1,26 +1,34 @@
 [
-    {
-        "id" : "1",
-        "experienceName" : "Tekos",
-        "role": "Front-end Developer",
-        "description": "",
-        "year" : "Sep 2022 - Aug 2023",
-        "image" : "../images/iflab.webp"
-    },
-    {
-        "id" : "2",
-        "experienceName" : "Informatics Lab",
-        "role": "Practicum Assistant of Web Development",
-        "description": "",
-        "year" : "Sep 2022 - Jan 2023",
-        "image" : "../images/iflab.webp"
-    },
-    {
-        "id" : "2",
-        "experienceName" : "Badan Amil Zakat Nasional (BAZNAS)",
-        "role": "Database Developer",
-        "description": "Database Developer Intern",
-        "year" : "Jun 2022 - Aug 2022",
-        "image" : "../images/baznas.webp"
-    }
+  {
+    "id": "1",
+    "experienceName": "Badan Amil Zakat Nasional (BAZNAS)",
+    "role": "Database Developer",
+    "description": "Database Developer Intern",
+    "year": "Jun 2022 - Aug 2022",
+    "image": "../images/baznas.webp"
+  },
+  {
+    "id": "2",
+    "experienceName": "Informatics Lab",
+    "role": "Practicum Assistant of Web Development",
+    "description": "",
+    "year": "Sep 2022 - Jan 2023",
+    "image": "../images/iflab.webp"
+  },
+  {
+    "id": "3",
+    "experienceName": "Tekos",
+    "role": "Front-end Developer",
+    "description": "",
+    "year": "Sep 2022 - Aug 2023",
+    "image": "../images/iflab.webp"
+  },
+  {
+    "id": "4",
+    "experienceName": "PT Altimeda Cipta Visitama",
+    "role": "Front-end Developer",
+    "description": "",
+    "year": "Jan 2024 - Present",
+    "image": "../images/iflab.webp"
+  }
 ]
