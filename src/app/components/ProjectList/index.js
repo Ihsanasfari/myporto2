@@ -11,13 +11,13 @@ const ProjectList = async () => {
             <hr className="h-[2px] my-2 bg-primary3 border-0" />
             <div className="flex flex-col gap-1">
               <h1
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold line-clamp-2"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold line-clamp-1"
                 title={project?.projectName}
               >
                 {project?.projectName}
               </h1>
               <h2
-                className="text-sm sm:text-base lg:text-lg line-clamp-2"
+                className="text-sm sm:text-base lg:text-lg line-clamp-1"
                 title={project?.buildWith}
               >
                 {project?.buildWith}
