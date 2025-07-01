@@ -50,7 +50,7 @@ export default function Home() {
               <Link
                 target="_blank"
                 href={
-                  "https://drive.google.com/file/d/1MwmVZHsPXVfxS4Msh1aau_AwLB2CZkPR/view?usp=sharing"
+                  "https://drive.google.com/file/d/1-7xsZz1kjkTFTsNZaNBllvmOQclNRKzG/view?usp=drive_link"
                 }
                 className="flex gap-2 w-60 items-center justify-center  rounded-xl px-2 py-4 mt-5 text-base cursor-pointer transition ease-in-out delay-150 bg-primary4 hover:bg-primary5 hover:-translate-y-1 hover:scale-110  duration-300 text-white"
               >

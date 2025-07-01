@@ -6,6 +6,7 @@ import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Image from "next/image";
 function TopNav() {
   const pathname = usePathname();
 
@@ -15,7 +16,15 @@ function TopNav() {
   return (
     <nav className="border flex justify-center sticky top-0 z-10  text-neutral-700 bg-white text-primary3">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between lg:flex-nowrap w-full   p-6">
-        <Link href="/">Ihsan Asfari</Link>
+        <Link className="flex items-center gap-2" href="/">
+          <Image
+            className="w-[130px] h-[68px] rounded-[10px]"
+            src="/images/mylogo/ia_logo_2.webp"
+            alt="logo"
+            width={600}
+            height={343}
+          />
+        </Link>
         {isHomePage ? (
           <button
             className="lg:hidden hover:bg-primary3 hover:bg-opacity-25 transition-all ease-in-out p-2 rounded-full"
