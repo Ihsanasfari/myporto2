@@ -29,7 +29,7 @@ const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
 ];
 
 export default function AdminShell() {
-  const { user, isLoading, isAuthenticated, logout } = useAuth();
+  const { user, isLoading, isAuthenticated, logout, refresh } = useAuth();
   const [active, setActive] = useState<Tab>("site");
   const [authParam, setAuthParam] = useState<string | null>(null);
 
@@ -41,8 +41,11 @@ export default function AdminShell() {
       const url = new URL(window.location.href);
       url.searchParams.delete("auth");
       window.history.replaceState({}, "", url.toString());
+      if (auth === "success") {
+        refresh();
+      }
     }
-  }, []);
+  }, [refresh]);
 
   if (isLoading) {
     return (

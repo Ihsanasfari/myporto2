@@ -1,4 +1,4 @@
-import { apiFetch, API_BASE_URL } from '../api-client';
+import { apiFetch, API_BASE_URL, ApiError } from '../api-client';
 import type { AuthMeResponse, AuthUser } from '@/types/api';
 
 export function getLoginUrl() {
@@ -6,8 +6,16 @@ export function getLoginUrl() {
 }
 
 export async function getCurrentUser(): Promise<AuthUser | null> {
-  const data = await apiFetch<AuthMeResponse>('/auth/me');
-  return data.user;
+  try {
+    const data = await apiFetch<AuthMeResponse>('/auth/me');
+    return data.user;
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 401) {
+      return null;
+    }
+    console.error('[auth] getCurrentUser failed:', err);
+    return null;
+  }
 }
 
 export async function logout(): Promise<void> {

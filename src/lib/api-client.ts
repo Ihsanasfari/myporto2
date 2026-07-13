@@ -1,6 +1,6 @@
 import type { ApiErrorResponse, ApiErrorCode } from '@/types/api';
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
 export class ApiError extends Error {
   code: ApiErrorCode;
@@ -28,10 +28,13 @@ export async function handleResponse<T>(res: Response): Promise<T> {
 }
 
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE_URL}${path}`, {
+  const url = `${API_BASE_URL}${path}`;
+  console.log(`[apiFetch] ${init?.method || 'GET'} ${url}`);
+  const res = await fetch(url, {
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     ...init,
   });
+  console.log(`[apiFetch] response status: ${res.status}`);
   return handleResponse<T>(res);
 }
