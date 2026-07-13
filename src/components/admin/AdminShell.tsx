@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import {
   LayoutDashboard,
   FolderKanban,
@@ -8,8 +9,10 @@ import {
   Briefcase,
   Settings,
   LogOut,
-  ExternalLink
+  ExternalLink,
+  Loader2
 } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import AdminLogin from "./AdminLogin";
 import SiteConfigPanel from "./panels/SiteConfigPanel";
 import ProjectsPanel from "./panels/ProjectsPanel";
@@ -26,30 +29,53 @@ const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
 ];
 
 export default function AdminShell() {
-  const [authed, setAuthed] = useState(
-    typeof window !== "undefined" && localStorage.getItem("admin_auth") === "true"
-  );
+  const { user, isLoading, isAuthenticated, logout } = useAuth();
   const [active, setActive] = useState<Tab>("site");
+  const [authParam, setAuthParam] = useState<string | null>(null);
 
-  if (!authed) {
-    return <AdminLogin onLogin={() => setAuthed(true)} />;
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const auth = params.get("auth");
+    if (auth) {
+      setAuthParam(auth);
+      const url = new URL(window.location.href);
+      url.searchParams.delete("auth");
+      window.history.replaceState({}, "", url.toString());
+    }
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Loader2 size={24} className="animate-spin text-muted" />
+      </div>
+    );
   }
 
-  const user = localStorage.getItem("admin_user") || "User";
+  if (!isAuthenticated) {
+    return (
+      <>
+        <Toaster position="top-center" />
+        <AdminLogin authError={authParam} />
+      </>
+    );
+  }
 
-  const handleLogout = () => {
-    localStorage.removeItem("admin_auth");
-    localStorage.removeItem("admin_user");
-    setAuthed(false);
+  const handleLogout = async () => {
+    await logout();
   };
 
   return (
     <div className="flex min-h-screen">
+      <Toaster position="top-center" />
+
       {/* Sidebar */}
       <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-border bg-surface/50 p-4 sm:flex">
         <div className="mb-8 flex items-center gap-2 px-2">
           <LayoutDashboard size={18} className="text-accent-soft" />
-          <span className="font-display text-sm font-semibold">Admin Panel</span>
+          <span className="font-display text-sm font-semibold">
+            Admin Panel
+          </span>
         </div>
 
         <nav className="flex flex-1 flex-col gap-1">
@@ -79,10 +105,10 @@ export default function AdminShell() {
             View portfolio
           </a>
           <div className="flex items-center justify-between rounded-lg px-3 py-2">
-            <span className="text-xs text-muted">{user}</span>
+            <span className="truncate text-xs text-muted">{user?.email}</span>
             <button
               onClick={handleLogout}
-              className="text-muted transition-colors hover:text-foreground"
+              className="shrink-0 text-muted transition-colors hover:text-foreground"
               aria-label="Logout"
             >
               <LogOut size={14} />
@@ -108,10 +134,7 @@ export default function AdminShell() {
               {tab.icon}
             </button>
           ))}
-          <button
-            onClick={handleLogout}
-            className="rounded-lg p-2 text-muted"
-          >
+          <button onClick={handleLogout} className="rounded-lg p-2 text-muted">
             <LogOut size={16} />
           </button>
         </div>

@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Lock, ArrowRight, ShieldCheck } from "lucide-react";
+import { Lock, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";
+import { getLoginUrl } from "@/lib/api/auth";
 
-export default function AdminLogin({ onLogin }: { onLogin: () => void }) {
+export default function AdminLogin({
+  authError
+}: {
+  authError?: string | null;
+}) {
   const [loading, setLoading] = useState(false);
 
   const handleGoogleLogin = () => {
     setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem("admin_auth", "true");
-      localStorage.setItem("admin_user", "Ihsan Asfari");
-      onLogin();
-    }, 800);
+    window.location.href = getLoginUrl();
   };
 
   return (
@@ -31,6 +32,13 @@ export default function AdminLogin({ onLogin }: { onLogin: () => void }) {
           </p>
         </div>
 
+        {authError === "failed" && (
+          <div className="mb-5 flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+            <AlertCircle size={16} />
+            <span>Authentication failed. Your email is not authorized.</span>
+          </div>
+        )}
+
         <button
           onClick={handleGoogleLogin}
           disabled={loading}
@@ -38,7 +46,12 @@ export default function AdminLogin({ onLogin }: { onLogin: () => void }) {
         >
           {!loading ? (
             <>
-              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path
                   fill="#4285F4"
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -61,7 +74,7 @@ export default function AdminLogin({ onLogin }: { onLogin: () => void }) {
           ) : (
             <>
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-foreground" />
-              Signing in...
+              Redirecting...
             </>
           )}
         </button>

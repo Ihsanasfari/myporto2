@@ -1,35 +1,59 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Save, RotateCcw, Check } from "lucide-react";
-import { site as defaultSite } from "@/data/portfolio";
-import type { SiteConfig } from "@/types";
-
-const STORAGE_KEY = "admin_site_config";
+import useSWR from "swr";
+import toast from "react-hot-toast";
+import { Save, RotateCcw, Check, Loader2 } from "lucide-react";
+import { siteApi } from "@/lib/api/site";
+import type { SiteConfig as ApiSiteConfig } from "@/types/api";
 
 export default function SiteConfigPanel() {
-  const [data, setData] = useState<SiteConfig>(defaultSite);
+  const { data, isLoading, mutate } = useSWR<ApiSiteConfig>("site-config", () =>
+    siteApi.get()
+  );
+  const [draft, setDraft] = useState<ApiSiteConfig | null>(null);
+  const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) setData(JSON.parse(stored));
-  }, []);
+    if (data && !draft) setDraft(data);
+  }, [data, draft]);
 
-  const update = (field: keyof SiteConfig, value: string | string[]) => {
-    setData((prev) => ({ ...prev, [field]: value }));
+  const update = (field: keyof ApiSiteConfig, value: string | string[]) => {
+    setDraft((prev) => (prev ? { ...prev, [field]: value } : prev));
   };
 
-  const handleSave = () => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+  const handleSave = async () => {
+    if (!draft) return;
+    setSaving(true);
+    try {
+      const updated = await siteApi.update(draft);
+      await mutate(updated, false);
+      setDraft(updated);
+      setSaved(true);
+      toast.success("Site config saved");
+      setTimeout(() => setSaved(false), 2000);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to save");
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleReset = () => {
-    setData(defaultSite);
-    localStorage.removeItem(STORAGE_KEY);
+    if (data) {
+      setDraft(data);
+      toast("Reverted to saved values");
+    }
   };
+
+  if (isLoading || !draft) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Loader2 size={20} className="animate-spin text-muted" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -40,23 +64,23 @@ export default function SiteConfigPanel() {
 
       <div className="glass flex flex-col gap-5 rounded-2xl p-6">
         <Field label="Name">
-          <Input value={data.name} onChange={(v) => update("name", v)} />
+          <Input value={draft.name} onChange={(v) => update("name", v)} />
         </Field>
 
         <Field label="Role / Title">
-          <Input value={data.role} onChange={(v) => update("role", v)} />
+          <Input value={draft.role} onChange={(v) => update("role", v)} />
         </Field>
 
         <Field label="Headline">
           <Input
-            value={data.headline}
+            value={draft.headline}
             onChange={(v) => update("headline", v)}
           />
         </Field>
 
         <Field label="Positioning Statement">
           <Textarea
-            value={data.positioning}
+            value={draft.positioning}
             onChange={(v) => update("positioning", v)}
             rows={3}
           />
@@ -64,7 +88,7 @@ export default function SiteConfigPanel() {
 
         <Field label="About">
           <Textarea
-            value={data.about}
+            value={draft.about}
             onChange={(v) => update("about", v)}
             rows={5}
           />
@@ -74,14 +98,14 @@ export default function SiteConfigPanel() {
           <Field label="Email">
             <Input
               type="email"
-              value={data.email}
+              value={draft.email}
               onChange={(v) => update("email", v)}
             />
           </Field>
 
           <Field label="Location">
             <Input
-              value={data.location}
+              value={draft.location}
               onChange={(v) => update("location", v)}
             />
           </Field>
@@ -91,7 +115,7 @@ export default function SiteConfigPanel() {
           <Field label="LinkedIn URL">
             <Input
               type="url"
-              value={data.linkedin}
+              value={draft.linkedin || ""}
               onChange={(v) => update("linkedin", v)}
             />
           </Field>
@@ -99,19 +123,22 @@ export default function SiteConfigPanel() {
           <Field label="GitHub URL">
             <Input
               type="url"
-              value={data.github}
+              value={draft.github || ""}
               onChange={(v) => update("github", v)}
             />
           </Field>
         </div>
 
         <Field label="CV URL">
-          <Input value={data.cvUrl} onChange={(v) => update("cvUrl", v)} />
+          <Input
+            value={draft.cvUrl || ""}
+            onChange={(v) => update("cvUrl", v)}
+          />
         </Field>
 
         <Field label="Tech Badges (comma-separated)">
           <Input
-            value={data.techBadges.join(", ")}
+            value={draft.techBadges.join(", ")}
             onChange={(v) =>
               update(
                 "techBadges",
@@ -125,7 +152,12 @@ export default function SiteConfigPanel() {
         </Field>
       </div>
 
-      <ActionBar onSave={handleSave} onReset={handleReset} saved={saved} />
+      <ActionBar
+        onSave={handleSave}
+        onReset={handleReset}
+        saved={saved}
+        saving={saving}
+      />
     </div>
   );
 }
@@ -208,19 +240,27 @@ export function Textarea({
 export function ActionBar({
   onSave,
   onReset,
-  saved
+  saved,
+  saving
 }: {
   onSave: () => void;
   onReset: () => void;
   saved: boolean;
+  saving?: boolean;
 }) {
   return (
     <div className="flex items-center gap-3">
       <button
         onClick={onSave}
-        className="focus-ring flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background"
+        disabled={saving}
+        className="focus-ring flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background disabled:opacity-50"
       >
-        {saved ? (
+        {saving ? (
+          <>
+            <Loader2 size={15} className="animate-spin" />
+            Saving...
+          </>
+        ) : saved ? (
           <>
             <Check size={15} />
             Saved
@@ -234,10 +274,11 @@ export function ActionBar({
       </button>
       <button
         onClick={onReset}
-        className="focus-ring flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-medium text-muted transition-colors hover:text-foreground"
+        disabled={saving}
+        className="focus-ring flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-medium text-muted transition-colors hover:text-foreground disabled:opacity-50"
       >
         <RotateCcw size={15} />
-        Reset to defaults
+        Reset to saved
       </button>
     </div>
   );
