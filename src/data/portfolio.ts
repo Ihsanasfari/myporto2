@@ -1,4 +1,10 @@
-import type { Experience, Project, SiteConfig, SkillGroup } from "@/types";
+import type {
+  Experience,
+  Project,
+  SiteConfig,
+  SkillGroup,
+  WritingEntry
+} from "@/types";
 
 export const site: SiteConfig = {
   name: "Ihsan Asfari Hanifan",
@@ -11,7 +17,7 @@ export const site: SiteConfig = {
     "I'm a front-end developer from Bandung, Indonesia, focused on building clean, scalable, and user-friendly web interfaces. I enjoy working on AI products, dashboards, chat interfaces, and complex product flows.",
   email: "ihsanasfarih@gmail.com",
   cvUrl: "/file/Ihsan Asfari Hanifan.pdf",
-  linkedin: "https://www.linkedin.com/in/ihsan-asfari-hanifan/",
+  linkedin: "https://www.linkedin.com/in/ihsanasfarihanifan/",
   github: "https://github.com/Ihsanasfari",
   techBadges: [
     "Next.js",
@@ -240,6 +246,41 @@ export const experiences: Experience[] = [
       "Guided lab sessions on HTML, CSS, JavaScript, and PHP",
       "Reviewed and graded student projects, giving practical code feedback"
     ]
+  }
+];
+
+/**
+ * Notes & writing. Replace the placeholder entries below with your own posts —
+ * add `href` to link out to an external article, or leave it off to render as
+ * plain text (no link).
+ */
+export const writing: WritingEntry[] = [
+  {
+    slug: "streaming-ai-chat-ui",
+    title: "Rendering streaming AI responses without layout jank",
+    date: "2025",
+    readingTime: "6 min read",
+    blurb:
+      "What I learned shipping token-by-token chat rendering in production: measuring before painting, stable scroll anchoring, and why markdown parsing belongs off the hot path.",
+    tags: ["AI UI", "React", "Performance"]
+  },
+  {
+    slug: "widget-registry-pattern",
+    title: "A widget registry pattern for configurable dashboards",
+    date: "2024",
+    readingTime: "8 min read",
+    blurb:
+      "How a single widget contract let charts, KPI cards, and data tables share one grid, one filter bus, and one persistence layer — without special-casing any of them.",
+    tags: ["Architecture", "Redux Toolkit", "Dashboards"]
+  },
+  {
+    slug: "typed-content-model",
+    title: "Driving a whole portfolio from one typed data file",
+    date: "2024",
+    readingTime: "4 min read",
+    blurb:
+      "Content as a typed module instead of scattered JSX: how it removed copy drift, made every section trivially reusable, and kept the build fully static.",
+    tags: ["TypeScript", "Next.js", "DX"]
   }
 ];
 

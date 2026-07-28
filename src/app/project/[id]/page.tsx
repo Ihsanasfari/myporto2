@@ -89,7 +89,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <article className="mx-auto w-full max-w-4xl px-5 pb-24 pt-28 sm:px-8">
       <Link
         href="/#projects"
-        className="focus-ring mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+        className="focus-ring mb-8 inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-foreground"
       >
         <ArrowLeft size={15} aria-hidden="true" />
         Back to projects
@@ -97,25 +97,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <header className="flex flex-col gap-4">
         <span
-          className="glass w-fit rounded-full px-3 py-1 text-xs font-medium"
+          className="w-fit rounded-full bg-gray-150 px-3 py-1 text-xs font-medium text-gray-700"
           style={{ color: project.accent }}
         >
           {project.year}
         </span>
-        <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           {project.name}
         </h1>
-        <p className="text-lg text-accent-soft">{project.tagline}</p>
-        <p className="max-w-2xl leading-relaxed text-muted">
+        <p className="text-lg font-medium text-gray-600">{project.tagline}</p>
+        <p className="max-w-2xl leading-relaxed text-gray-500">
           {project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-md border border-border bg-white/[0.03] px-2.5 py-1 text-xs text-muted"
-            >
+            <span key={tech} className="tag-pill">
               {tech}
             </span>
           ))}
@@ -127,7 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background"
+              className="btn-primary"
             >
               Live demo
               <ExternalLink size={14} aria-hidden="true" />
@@ -138,7 +135,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring glass flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white/[0.06]"
+              className="btn-ghost"
             >
               Source code
               <GithubIcon size={14} />
@@ -157,37 +154,37 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {caseStudy && (
         <section className="flex flex-col gap-8">
           <div className="grid gap-6 sm:grid-cols-2">
-            <div className="glass rounded-2xl p-6">
-              <h2 className="mb-3 font-display text-lg font-semibold">
+            <div className="rounded-card border border-border bg-surface p-6">
+              <h2 className="mb-3 font-display text-lg font-semibold text-foreground">
                 Problem
               </h2>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-sm leading-relaxed text-gray-500">
                 {caseStudy.problem}
               </p>
             </div>
-            <div className="glass rounded-2xl p-6">
-              <h2 className="mb-3 font-display text-lg font-semibold">
+            <div className="rounded-card border border-border bg-surface p-6">
+              <h2 className="mb-3 font-display text-lg font-semibold text-foreground">
                 My Role
               </h2>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-sm leading-relaxed text-gray-500">
                 {caseStudy.role}
               </p>
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-6">
-            <h2 className="mb-4 font-display text-lg font-semibold">
+          <div className="rounded-card border border-border bg-surface p-6">
+            <h2 className="mb-4 font-display text-lg font-semibold text-foreground">
               Key Features
             </h2>
             <ul className="grid gap-3 sm:grid-cols-2">
               {caseStudy.keyFeatures.map((feature) => (
                 <li
                   key={feature}
-                  className="flex items-start gap-2 text-sm text-muted"
+                  className="flex items-start gap-2 text-sm text-gray-600"
                 >
                   <Check
                     size={15}
-                    className="mt-0.5 shrink-0 text-accent-cyan"
+                    className="mt-0.5 shrink-0 text-gray-700"
                     aria-hidden="true"
                   />
                   {feature}
@@ -196,15 +193,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </ul>
           </div>
 
-          <div className="glass rounded-2xl p-6">
-            <h2 className="mb-4 font-display text-lg font-semibold">
+          <div className="rounded-card border border-border bg-surface p-6">
+            <h2 className="mb-4 font-display text-lg font-semibold text-foreground">
               Technical Challenges
             </h2>
             <ul className="flex flex-col gap-3">
               {caseStudy.technicalChallenges.map((challenge) => (
                 <li
                   key={challenge}
-                  className="flex items-start gap-2 text-sm text-muted"
+                  className="flex items-start gap-2 text-sm text-gray-600"
                 >
                   <span
                     className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
@@ -216,11 +213,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </ul>
           </div>
 
-          <div className="glass-strong rounded-2xl p-6">
-            <h2 className="mb-3 font-display text-lg font-semibold text-accent-soft">
+          <div className="rounded-card-lg bg-surface-alt p-6">
+            <h2 className="mb-3 font-display text-lg font-semibold text-foreground">
               Result &amp; Impact
             </h2>
-            <p className="text-sm leading-relaxed text-foreground">
+            <p className="text-sm leading-relaxed text-gray-800">
               {caseStudy.result}
             </p>
           </div>

@@ -50,7 +50,7 @@ export default function SiteConfigPanel() {
   if (isLoading || !draft) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 size={20} className="animate-spin text-muted" />
+        <Loader2 size={20} className="animate-spin text-gray-500" />
       </div>
     );
   }
@@ -174,7 +174,7 @@ export function PanelHeader({
       <h2 className="font-display text-lg font-semibold tracking-tight">
         {title}
       </h2>
-      <p className="mt-1 text-sm text-muted">{description}</p>
+      <p className="mt-1 text-sm text-gray-500">{description}</p>
     </div>
   );
 }
@@ -188,7 +188,7 @@ export function Field({
 }) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="text-xs font-medium uppercase tracking-wider text-muted">
+      <span className="text-xs font-medium uppercase tracking-wider text-gray-500">
         {label}
       </span>
       {children}
@@ -213,7 +213,7 @@ export function Input({
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
-      className="focus-ring rounded-lg border border-border bg-white/[0.03] px-3 py-2 text-sm text-foreground transition-colors placeholder:text-muted/50"
+      className="focus-ring rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground transition-colors placeholder:text-gray-400"
     />
   );
 }
@@ -232,7 +232,7 @@ export function Textarea({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       rows={rows}
-      className="focus-ring resize-y rounded-lg border border-border bg-white/[0.03] px-3 py-2 text-sm leading-relaxed text-foreground transition-colors placeholder:text-muted/50"
+      className="focus-ring resize-y rounded-lg border border-border bg-surface px-3 py-2 text-sm leading-relaxed text-foreground transition-colors placeholder:text-gray-400"
     />
   );
 }
@@ -253,7 +253,7 @@ export function ActionBar({
       <button
         onClick={onSave}
         disabled={saving}
-        className="focus-ring flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background disabled:opacity-50"
+        className="focus-ring flex items-center gap-2 rounded-xl btn-primary disabled:opacity-50"
       >
         {saving ? (
           <>
@@ -275,7 +275,7 @@ export function ActionBar({
       <button
         onClick={onReset}
         disabled={saving}
-        className="focus-ring flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-medium text-muted transition-colors hover:text-foreground disabled:opacity-50"
+        className="focus-ring flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:text-foreground disabled:opacity-50"
       >
         <RotateCcw size={15} />
         Reset to saved

@@ -50,7 +50,7 @@ export default function AdminShell() {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Loader2 size={24} className="animate-spin text-muted" />
+        <Loader2 size={24} className="animate-spin text-gray-500" />
       </div>
     );
   }
@@ -73,9 +73,9 @@ export default function AdminShell() {
       <Toaster position="top-center" />
 
       {/* Sidebar */}
-      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-border bg-surface/50 p-4 sm:flex">
+      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-border bg-surface p-4 sm:flex">
         <div className="mb-8 flex items-center gap-2 px-2">
-          <LayoutDashboard size={18} className="text-accent-soft" />
+          <LayoutDashboard size={18} className="text-gray-700" />
           <span className="font-display text-sm font-semibold">
             Admin Panel
           </span>
@@ -88,8 +88,8 @@ export default function AdminShell() {
               onClick={() => setActive(tab.id)}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                 active === tab.id
-                  ? "bg-accent/15 text-accent-soft"
-                  : "text-muted hover:bg-white/[0.03] hover:text-foreground"
+                  ? "bg-accent-soft text-gray-900"
+                  : "text-gray-500 hover:bg-gray-100 hover:text-foreground"
               }`}
             >
               {tab.icon}
@@ -102,16 +102,18 @@ export default function AdminShell() {
           <a
             href="/"
             target="_blank"
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted transition-colors hover:text-foreground"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-gray-500 transition-colors hover:text-foreground"
           >
             <ExternalLink size={14} />
             View portfolio
           </a>
           <div className="flex items-center justify-between rounded-lg px-3 py-2">
-            <span className="truncate text-xs text-muted">{user?.email}</span>
+            <span className="truncate text-xs text-gray-500">
+              {user?.email}
+            </span>
             <button
               onClick={handleLogout}
-              className="shrink-0 text-muted transition-colors hover:text-foreground"
+              className="shrink-0 text-gray-500 transition-colors hover:text-foreground"
               aria-label="Logout"
             >
               <LogOut size={14} />
@@ -130,14 +132,17 @@ export default function AdminShell() {
               onClick={() => setActive(tab.id)}
               className={`rounded-lg p-2 transition-colors ${
                 active === tab.id
-                  ? "bg-accent/15 text-accent-soft"
-                  : "text-muted"
+                  ? "bg-accent-soft text-gray-900"
+                  : "text-gray-500"
               }`}
             >
               {tab.icon}
             </button>
           ))}
-          <button onClick={handleLogout} className="rounded-lg p-2 text-muted">
+          <button
+            onClick={handleLogout}
+            className="rounded-lg p-2 text-gray-500"
+          >
             <LogOut size={16} />
           </button>
         </div>

@@ -46,7 +46,7 @@ export default function Navbar() {
           className="focus-ring font-display text-lg font-semibold tracking-tight"
           onClick={() => setOpen(false)}
         >
-          ihsan<span className="text-accent-soft">.dev</span>
+          ihsan<span className="text-gray-400">.dev</span>
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
@@ -54,7 +54,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="focus-ring rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
+              className="focus-ring rounded-lg px-3 py-2 text-sm text-gray-500 transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -65,7 +65,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={openPalette}
-            className="focus-ring glass hidden items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-muted transition-colors hover:text-foreground sm:flex"
+            className="focus-ring glass hidden items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-gray-500 transition-colors hover:text-foreground sm:flex"
             aria-label="Open command palette"
           >
             <Command size={13} aria-hidden="true" />
@@ -76,7 +76,7 @@ export default function Navbar() {
             href={site.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="focus-ring hidden rounded-lg bg-accent px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background lg:block"
+            className="focus-ring hidden rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-background transition-colors hover:bg-ink-tertiary lg:block"
           >
             Download CV
           </a>
@@ -101,7 +101,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="focus-ring rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-white/5 hover:text-foreground"
+                className="focus-ring rounded-lg px-3 py-2.5 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -110,7 +110,7 @@ export default function Navbar() {
               href={site.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring mt-2 rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-medium text-white"
+              className="focus-ring mt-2 rounded-full bg-ink px-4 py-2.5 text-center text-sm font-medium text-background"
             >
               Download CV
             </a>

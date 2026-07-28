@@ -39,6 +39,16 @@ export interface Experience {
   highlights: string[];
 }
 
+export interface WritingEntry {
+  slug: string;
+  title: string;
+  date: string;
+  readingTime: string;
+  blurb: string;
+  tags: string[];
+  href?: string;
+}
+
 export interface SiteConfig {
   name: string;
   role: string;

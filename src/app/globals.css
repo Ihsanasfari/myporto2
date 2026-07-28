@@ -2,20 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-main: #f8f8f8;
+  --text-main: #222222;
+
+  --gray-900: #000000;
+  --gray-800: #222222;
+  --gray-700: #2c2c2c;
+  --gray-600: #3e3e3e;
+  --gray-500: #4e4e4e;
+  --gray-400: #a7a7a7;
+  --gray-300: #c1c1c1;
+  --gray-200: #dedede;
+  --gray-150: #ededed;
+  --gray-100: #f0f0f0;
+  --gray-050: #ffffff;
+  --surface-alt: #e7e6e4;
+
+  --accent: #ebe234;
+  --accent-soft: #fff083;
+
+  --btn-primary-bg: #0f0f17;
+  --btn-secondary-bg: #222222;
+  --btn-tertiary-bg: #3e3e3e;
+  --btn-accent-bg: #fcf083;
+}
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 4rem;
 }
 
 body {
-  background-color: #050508;
-  color: #f4f4f8;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgba(124, 108, 246, 0.4);
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--gray-900);
 }
 
 ::-webkit-scrollbar {
@@ -23,16 +50,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0b12;
+  background: var(--gray-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #26263a;
+  background: var(--gray-300);
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #343450;
+  background: var(--gray-400);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -42,16 +69,28 @@ body {
 }
 
 @layer components {
+  /* Card surface: separation comes from background contrast, not heavy shadow */
+  .surface-card {
+    @apply border border-border bg-surface;
+  }
+
+  .surface-muted {
+    @apply border border-border bg-surface-alt;
+  }
+
+  /* Legacy aliases from the previous dark theme, remapped to light surfaces
+     so pre-redesign routes (project detail, admin) stay legible. */
   .glass {
-    @apply border border-border bg-white/[0.03] backdrop-blur-md;
+    @apply border border-border bg-surface;
   }
 
   .glass-strong {
-    @apply border border-border-strong bg-white/[0.05] backdrop-blur-xl;
+    @apply border border-border-strong bg-surface-alt;
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-accent-soft via-accent-blue to-accent-cyan bg-clip-text text-transparent;
+    @apply text-foreground decoration-accent decoration-4 underline-offset-4;
+    text-decoration-line: underline;
   }
 
   .section-container {
@@ -60,5 +99,41 @@ body {
 
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Pill tag for tech-stack labels */
+  .tag-pill {
+    @apply inline-flex items-center rounded-full bg-gray-150 px-3 py-1 text-xs font-medium text-gray-700;
+  }
+
+  .btn-base {
+    @apply focus-ring inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-ink text-background hover:bg-ink-tertiary;
+  }
+
+  .btn-accent {
+    @apply btn-base bg-accent-btn text-gray-900 hover:bg-accent;
+  }
+
+  .btn-ghost {
+    @apply btn-base border border-border bg-transparent text-foreground hover:border-border-strong hover:bg-surface;
+  }
+
+  /* Underline that reveals on hover, drawn in accent yellow */
+  .link-underline {
+    @apply relative inline-flex w-fit items-center gap-1;
+  }
+
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-[2px] w-full origin-left scale-x-0 bg-accent transition-transform duration-300;
+  }
+
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    @apply scale-x-100;
   }
 }

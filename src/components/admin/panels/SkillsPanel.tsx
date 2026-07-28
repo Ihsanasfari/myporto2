@@ -46,7 +46,7 @@ export default function SkillsPanel() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 size={20} className="animate-spin text-muted" />
+        <Loader2 size={20} className="animate-spin text-gray-500" />
       </div>
     );
   }
@@ -76,7 +76,7 @@ export default function SkillsPanel() {
 
       <button
         onClick={addGroup}
-        className="focus-ring flex items-center justify-center gap-2 rounded-xl border border-dashed border-border px-5 py-3 text-sm text-muted transition-colors hover:border-border-strong hover:text-foreground"
+        className="focus-ring flex items-center justify-center gap-2 rounded-xl border border-dashed border-border px-5 py-3 text-sm text-gray-500 transition-colors hover:border-border-strong hover:text-foreground"
       >
         <Plus size={16} />
         Add skill group
@@ -128,7 +128,7 @@ function SkillRow({
             <select
               value={draft.icon}
               onChange={(e) => update({ icon: e.target.value })}
-              className="focus-ring rounded-lg border border-border bg-white/[0.03] px-3 py-2 text-sm text-foreground"
+              className="focus-ring rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground"
             >
               <option value="code">Code</option>
               <option value="database">Database</option>
@@ -165,7 +165,7 @@ function SkillRow({
         <button
           onClick={handleSave}
           disabled={saving}
-          className="focus-ring flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background disabled:opacity-50"
+          className="focus-ring flex items-center gap-2 rounded-lg btn-primary disabled:opacity-50"
         >
           {saving ? (
             <>

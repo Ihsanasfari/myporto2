@@ -197,28 +197,28 @@ export default function CommandPalette() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="glass-strong w-full max-w-lg overflow-hidden rounded-2xl bg-surface shadow-2xl shadow-black/50"
+            className="glass-strong w-full max-w-lg overflow-hidden rounded-card bg-surface shadow-lift"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center gap-3 border-b border-border px-4">
-              <Search size={16} className="text-muted" aria-hidden="true" />
+              <Search size={16} className="text-gray-400" aria-hidden="true" />
               <input
                 ref={inputRef}
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 onKeyDown={onInputKeyDown}
                 placeholder="Search sections, projects, actions..."
-                className="w-full bg-transparent py-4 text-sm text-foreground placeholder:text-muted focus:outline-none"
+                className="w-full bg-transparent py-4 text-sm text-foreground placeholder:text-gray-400 focus:outline-none"
                 aria-label="Search commands"
               />
-              <kbd className="glass rounded px-1.5 py-0.5 text-[10px] text-muted">
+              <kbd className="rounded bg-gray-150 px-1.5 py-0.5 text-[10px] text-gray-500">
                 Esc
               </kbd>
             </div>
 
             <ul className="max-h-72 overflow-y-auto p-2" role="listbox">
               {filtered.length === 0 && (
-                <li className="px-3 py-8 text-center text-sm text-muted">
+                <li className="px-3 py-8 text-center text-sm text-gray-500">
                   No results found
                 </li>
               )}
@@ -234,13 +234,13 @@ export default function CommandPalette() {
                     onMouseEnter={() => setActiveIndex(index)}
                     className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${
                       index === activeIndex
-                        ? "bg-accent/20 text-foreground"
-                        : "text-muted hover:text-foreground"
+                        ? "bg-accent-soft text-gray-900"
+                        : "text-gray-500 hover:text-foreground"
                     }`}
                   >
-                    <span className="text-accent-soft">{action.icon}</span>
+                    <span className="text-gray-700">{action.icon}</span>
                     <span className="flex-1">{action.label}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-muted">
+                    <span className="text-[10px] uppercase tracking-wider text-gray-400">
                       {action.group}
                     </span>
                   </button>

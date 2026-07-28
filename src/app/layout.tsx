@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import ScrollProgress from "@/components/ScrollProgress";
-import CommandPalette from "@/components/CommandPalette";
+import GlobalChrome from "@/components/GlobalChrome";
 import { site } from "@/data/portfolio";
 import "./globals.css";
 
@@ -52,9 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-screen bg-background font-sans text-foreground">
-        <ScrollProgress />
-        <Navbar />
-        <CommandPalette />
+        <GlobalChrome />
         {children}
       </body>
     </html>

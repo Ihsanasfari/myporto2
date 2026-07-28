@@ -8,19 +8,66 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#050508",
-        surface: "#0b0b12",
-        "surface-2": "#11111c",
-        border: "rgba(255,255,255,0.08)",
-        "border-strong": "rgba(255,255,255,0.14)",
-        muted: "#8b8fa3",
-        foreground: "#f4f4f8",
+        /* --- Base surfaces --- */
+        background: "#F8F8F8",
+        surface: "#FFFFFF",
+        "surface-2": "#E7E6E4",
+        "surface-alt": "#E7E6E4",
+
+        /* --- Text --- */
+        foreground: "#222222",
+        muted: "#4E4E4E",
+        "muted-soft": "#A7A7A7",
+
+        /* --- Lines --- */
+        border: "#DEDEDE",
+        "border-strong": "#C1C1C1",
+
+        /* --- Neutral scale --- */
+        gray: {
+          900: "#000000",
+          800: "#222222",
+          700: "#2C2C2C",
+          600: "#3E3E3E",
+          500: "#4E4E4E",
+          400: "#A7A7A7",
+          300: "#C1C1C1",
+          200: "#DEDEDE",
+          150: "#EDEDED",
+          100: "#F0F0F0",
+          50: "#FFFFFF"
+        },
+
+        /* --- Accent (yellow): highlights, active states, one CTA --- */
         accent: {
-          DEFAULT: "#7c6cf6",
-          soft: "#a5a0ff",
-          cyan: "#5eead4",
-          blue: "#60a5fa"
+          DEFAULT: "#EBE234",
+          soft: "#FFF083",
+          btn: "#FCF083",
+          /* legacy aliases kept so pre-redesign routes still compile */
+          cyan: "#3E3E3E",
+          blue: "#2C2C2C"
+        },
+
+        /* --- Ink (near-black buttons / high emphasis) --- */
+        ink: {
+          DEFAULT: "#0F0F17",
+          secondary: "#222222",
+          tertiary: "#3E3E3E"
         }
+      },
+      borderRadius: {
+        card: "1.25rem",
+        "card-lg": "1.75rem"
+      },
+      boxShadow: {
+        soft: "0 4px 20px rgba(0,0,0,0.05)",
+        lift: "0 10px 30px rgba(0,0,0,0.07)"
+      },
+      fontSize: {
+        display: [
+          "clamp(2.5rem, 5vw, 3.75rem)",
+          { lineHeight: "1.05", letterSpacing: "-0.02em" }
+        ]
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
@@ -29,6 +76,9 @@ module.exports = {
           "var(--font-inter)",
           "sans-serif"
         ]
+      },
+      maxWidth: {
+        prose: "38rem"
       },
       animation: {
         "fade-in": "fade-in 0.6s ease forwards",

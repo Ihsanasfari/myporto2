@@ -78,7 +78,7 @@ export default function ProjectsPanel() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 size={20} className="animate-spin text-muted" />
+        <Loader2 size={20} className="animate-spin text-gray-500" />
       </div>
     );
   }
@@ -122,7 +122,7 @@ export default function ProjectsPanel() {
 
       <button
         onClick={addProject}
-        className="focus-ring flex items-center justify-center gap-2 rounded-xl border border-dashed border-border px-5 py-3 text-sm text-muted transition-colors hover:border-border-strong hover:text-foreground"
+        className="focus-ring flex items-center justify-center gap-2 rounded-xl border border-dashed border-border px-5 py-3 text-sm text-gray-500 transition-colors hover:border-border-strong hover:text-foreground"
       >
         <Plus size={16} />
         Add new project
@@ -208,7 +208,7 @@ function ProjectRow({
         className="flex w-full items-center justify-between px-5 py-4 text-left"
       >
         <div className="flex items-center gap-3">
-          <GripVertical size={15} className="text-muted/40" />
+          <GripVertical size={15} className="text-gray-500/40" />
           <span
             className="h-2.5 w-2.5 rounded-full"
             style={{ backgroundColor: draft.accent }}
@@ -217,15 +217,15 @@ function ProjectRow({
             {draft.name || "Untitled project"}
           </span>
           {draft.featured && (
-            <span className="rounded-md bg-accent/15 px-2 py-0.5 text-xs text-accent-soft">
+            <span className="rounded-md bg-accent-soft px-2 py-0.5 text-xs text-gray-900">
               Featured
             </span>
           )}
         </div>
         {expanded ? (
-          <ChevronUp size={16} className="text-muted" />
+          <ChevronUp size={16} className="text-gray-500" />
         ) : (
-          <ChevronDown size={16} className="text-muted" />
+          <ChevronDown size={16} className="text-gray-500" />
         )}
       </button>
 
@@ -270,7 +270,7 @@ function ProjectRow({
               <select
                 value={draft.mockup || ""}
                 onChange={(e) => update({ mockup: e.target.value || null })}
-                className="focus-ring rounded-lg border border-border bg-white/[0.03] px-3 py-2 text-sm text-foreground"
+                className="focus-ring rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground"
               >
                 <option value="">None</option>
                 <option value="ai-chat">AI Chat</option>
@@ -335,7 +335,7 @@ function ProjectRow({
                   className="h-12 w-12 rounded-lg object-cover"
                 />
               )}
-              <label className="focus-ring flex cursor-pointer items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm text-muted transition-colors hover:text-foreground">
+              <label className="focus-ring flex cursor-pointer items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm text-gray-500 transition-colors hover:text-foreground">
                 {uploading ? (
                   <>
                     <Loader2 size={14} className="animate-spin" />
@@ -358,7 +358,7 @@ function ProjectRow({
             </div>
           </Field>
 
-          <label className="flex items-center gap-2 text-sm text-muted">
+          <label className="flex items-center gap-2 text-sm text-gray-500">
             <input
               type="checkbox"
               checked={draft.featured}
@@ -369,8 +369,8 @@ function ProjectRow({
           </label>
 
           {/* Case Study section */}
-          <div className="rounded-xl border border-border bg-white/[0.02] p-5">
-            <h4 className="mb-4 font-display text-sm font-semibold text-accent-soft">
+          <div className="rounded-xl border border-border bg-gray-100 p-5">
+            <h4 className="mb-4 font-display text-sm font-semibold text-gray-700">
               Case Study
             </h4>
             <div className="flex flex-col gap-4">
@@ -428,7 +428,7 @@ function ProjectRow({
             <button
               onClick={handleSave}
               disabled={saving}
-              className="focus-ring flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-soft hover:text-background disabled:opacity-50"
+              className="focus-ring flex items-center gap-2 rounded-xl btn-primary disabled:opacity-50"
             >
               {saving ? (
                 <>

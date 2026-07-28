@@ -18,22 +18,22 @@ export default function AdminLogin({
 
   return (
     <div className="flex min-h-screen items-center justify-center px-5">
-      <div className="glass-strong w-full max-w-md rounded-3xl p-8 sm:p-10">
+      <div className="glass-strong w-full max-w-md rounded-card-lg p-8 sm:p-10">
         <div className="mb-8 flex flex-col items-center text-center">
-          <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/15 text-accent-soft">
+          <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-soft text-gray-900">
             <ShieldCheck size={26} />
           </span>
-          <h1 className="font-display text-xl font-semibold tracking-tight">
+          <h1 className="font-display text-xl font-semibold tracking-tight text-foreground">
             Admin Access
           </h1>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-2 text-sm text-gray-500">
             Sign in to manage your portfolio content — projects, skills,
             experience, and more.
           </p>
         </div>
 
         {authError === "failed" && (
-          <div className="mb-5 flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+          <div className="mb-5 flex items-center gap-2 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
             <AlertCircle size={16} />
             <span>Authentication failed. Your email is not authorized.</span>
           </div>
@@ -42,7 +42,7 @@ export default function AdminLogin({
         <button
           onClick={handleGoogleLogin}
           disabled={loading}
-          className="focus-ring flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-white/[0.03] px-5 py-3.5 text-sm font-medium transition-all hover:bg-white/[0.06] disabled:opacity-50"
+          className="focus-ring flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-surface px-5 py-3.5 text-sm font-medium transition-all hover:bg-gray-100 disabled:opacity-50"
         >
           {!loading ? (
             <>
@@ -73,20 +73,20 @@ export default function AdminLogin({
             </>
           ) : (
             <>
-              <span className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-foreground" />
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-700" />
               Redirecting...
             </>
           )}
         </button>
 
-        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted">
+        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500">
           <Lock size={12} aria-hidden="true" />
           Only authorized accounts can access the admin panel.
         </div>
 
         <a
           href="/"
-          className="mt-6 flex items-center justify-center gap-1.5 text-xs text-muted transition-colors hover:text-foreground"
+          className="mt-6 flex items-center justify-center gap-1.5 text-xs text-gray-500 transition-colors hover:text-foreground"
         >
           Back to portfolio
           <ArrowRight size={12} aria-hidden="true" />
