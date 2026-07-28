@@ -1,15 +1,24 @@
+"use client";
+
 import { Briefcase } from "lucide-react";
+import useSWR from "swr";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
-import { experiences } from "@/data/portfolio";
+import { experiences as fallbackExperiences } from "@/data/portfolio";
+import { experiencesApi } from "@/lib/api/experiences";
+import type { Experience } from "@/types/api";
 
 export default function Experience() {
+  const { data } = useSWR<Experience[]>(
+    "experiences",
+    () => experiencesApi.list(),
+    { revalidateOnFocus: false }
+  );
+
+  const experiences = data ?? fallbackExperiences;
+
   return (
-    <section
-      id="experience"
-      aria-label="Experience timeline"
-      className="py-24"
-    >
+    <section id="experience" aria-label="Experience timeline" className="py-24">
       <div className="section-container">
         <SectionHeading
           eyebrow="Career"

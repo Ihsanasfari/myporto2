@@ -3,11 +3,23 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
+import useSWR from "swr";
 import DashboardPreview from "./DashboardPreview";
-import { site } from "@/data/portfolio";
+import { site as fallbackSite } from "@/data/portfolio";
+import { siteApi } from "@/lib/api/site";
+import type { SiteConfig } from "@/types/api";
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
+
+  const { data: site = fallbackSite } = useSWR<SiteConfig>(
+    "site",
+    () => siteApi.get(),
+    {
+      fallbackData: fallbackSite,
+      revalidateOnFocus: false
+    }
+  );
 
   const fadeUp = (delay: number) => ({
     initial: prefersReducedMotion ? false : { opacity: 0, y: 20 },
@@ -64,7 +76,7 @@ export default function Hero() {
               />
             </Link>
             <a
-              href={site.cvUrl}
+              href={site.cvUrl ?? "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="focus-ring glass flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-border-strong hover:bg-white/[0.06]"

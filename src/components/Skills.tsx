@@ -1,7 +1,12 @@
+"use client";
+
 import { Code2, Database, Layout, Sparkles, Wrench } from "lucide-react";
+import useSWR from "swr";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
-import { skillGroups } from "@/data/portfolio";
+import { skillGroups as fallbackGroups } from "@/data/portfolio";
+import { skillsApi } from "@/lib/api/skills";
+import type { SkillGroup } from "@/types/api";
 
 const iconMap: Record<string, React.ReactNode> = {
   code: <Code2 size={18} aria-hidden="true" />,
@@ -12,6 +17,12 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function Skills() {
+  const { data } = useSWR<SkillGroup[]>("skills", () => skillsApi.list(), {
+    revalidateOnFocus: false
+  });
+
+  const groups = data ?? fallbackGroups;
+
   return (
     <section id="skills" aria-label="Skills" className="py-24">
       <div className="section-container">
@@ -22,7 +33,7 @@ export default function Skills() {
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, index) => (
+          {groups.map((group, index) => (
             <Reveal key={group.title} delay={index * 0.08}>
               <div className="glass h-full rounded-2xl p-6 transition-colors hover:border-border-strong">
                 <div className="mb-4 flex items-center gap-3">

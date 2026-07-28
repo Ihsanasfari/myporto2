@@ -69,7 +69,7 @@ export default function AdminShell() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen pt-10">
       <Toaster position="top-center" />
 
       {/* Sidebar */}

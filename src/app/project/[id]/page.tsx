@@ -3,22 +3,46 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Check, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/BrandIcons";
 import ProjectMockup from "@/components/ProjectMockup";
-import { getProjectBySlug, projects } from "@/data/portfolio";
+import {
+  getProjectBySlug,
+  projects as fallbackProjects
+} from "@/data/portfolio";
+import { projectsApi } from "@/lib/api/projects";
+import type { Project as ApiProject } from "@/types/api";
+import type { ProjectMockup as MockupType } from "@/types";
 import type { Metadata } from "next";
+
+const VALID_MOCKUPS: MockupType[] = ["ai-chat", "crm", "booking", "portfolio"];
+
+function toMockupType(value: string | null): MockupType {
+  return VALID_MOCKUPS.includes(value as MockupType)
+    ? (value as MockupType)
+    : "portfolio";
+}
 
 interface ProjectPageProps {
   params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({ id: project.slug }));
+  return fallbackProjects.map((project) => ({ id: project.slug }));
 }
 
 export async function generateMetadata({
   params
 }: ProjectPageProps): Promise<Metadata> {
   const { id } = await params;
-  const project = getProjectBySlug(id);
+
+  let project: { name: string; description: string } | undefined;
+  try {
+    const apiProject = await projectsApi.getByIdOrSlug(id);
+    project = { name: apiProject.name, description: apiProject.description };
+  } catch {
+    const fallback = getProjectBySlug(id);
+    project = fallback
+      ? { name: fallback.name, description: fallback.description }
+      : undefined;
+  }
 
   if (!project) {
     return { title: "Project Not Found" };
@@ -36,7 +60,24 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
-  const project = getProjectBySlug(id);
+
+  let project: ApiProject | undefined;
+  try {
+    project = await projectsApi.getByIdOrSlug(id);
+  } catch {
+    const fallback = getProjectBySlug(id);
+    if (fallback) {
+      project = {
+        ...fallback,
+        id: 0,
+        createdAt: "",
+        updatedAt: "",
+        demoLink: fallback.demoLink ?? null,
+        githubLink: fallback.githubLink ?? null,
+        image: fallback.image ?? null
+      } as ApiProject;
+    }
+  }
 
   if (!project) {
     notFound();
@@ -107,69 +148,84 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </header>
 
       <div className="my-10">
-        <ProjectMockup type={project.mockup} accent={project.accent} />
+        <ProjectMockup
+          type={toMockupType(project.mockup)}
+          accent={project.accent}
+        />
       </div>
 
-      <section className="flex flex-col gap-8">
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div className="glass rounded-2xl p-6">
-            <h2 className="mb-3 font-display text-lg font-semibold">Problem</h2>
-            <p className="text-sm leading-relaxed text-muted">{caseStudy.problem}</p>
+      {caseStudy && (
+        <section className="flex flex-col gap-8">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="glass rounded-2xl p-6">
+              <h2 className="mb-3 font-display text-lg font-semibold">
+                Problem
+              </h2>
+              <p className="text-sm leading-relaxed text-muted">
+                {caseStudy.problem}
+              </p>
+            </div>
+            <div className="glass rounded-2xl p-6">
+              <h2 className="mb-3 font-display text-lg font-semibold">
+                My Role
+              </h2>
+              <p className="text-sm leading-relaxed text-muted">
+                {caseStudy.role}
+              </p>
+            </div>
           </div>
+
           <div className="glass rounded-2xl p-6">
-            <h2 className="mb-3 font-display text-lg font-semibold">My Role</h2>
-            <p className="text-sm leading-relaxed text-muted">{caseStudy.role}</p>
+            <h2 className="mb-4 font-display text-lg font-semibold">
+              Key Features
+            </h2>
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {caseStudy.keyFeatures.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2 text-sm text-muted"
+                >
+                  <Check
+                    size={15}
+                    className="mt-0.5 shrink-0 text-accent-cyan"
+                    aria-hidden="true"
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
 
-        <div className="glass rounded-2xl p-6">
-          <h2 className="mb-4 font-display text-lg font-semibold">Key Features</h2>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {caseStudy.keyFeatures.map((feature) => (
-              <li
-                key={feature}
-                className="flex items-start gap-2 text-sm text-muted"
-              >
-                <Check
-                  size={15}
-                  className="mt-0.5 shrink-0 text-accent-cyan"
-                  aria-hidden="true"
-                />
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="glass rounded-2xl p-6">
+            <h2 className="mb-4 font-display text-lg font-semibold">
+              Technical Challenges
+            </h2>
+            <ul className="flex flex-col gap-3">
+              {caseStudy.technicalChallenges.map((challenge) => (
+                <li
+                  key={challenge}
+                  className="flex items-start gap-2 text-sm text-muted"
+                >
+                  <span
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
+                  {challenge}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="glass rounded-2xl p-6">
-          <h2 className="mb-4 font-display text-lg font-semibold">
-            Technical Challenges
-          </h2>
-          <ul className="flex flex-col gap-3">
-            {caseStudy.technicalChallenges.map((challenge) => (
-              <li
-                key={challenge}
-                className="flex items-start gap-2 text-sm text-muted"
-              >
-                <span
-                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                  aria-hidden="true"
-                />
-                {challenge}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="glass-strong rounded-2xl p-6">
-          <h2 className="mb-3 font-display text-lg font-semibold text-accent-soft">
-            Result &amp; Impact
-          </h2>
-          <p className="text-sm leading-relaxed text-foreground">
-            {caseStudy.result}
-          </p>
-        </div>
-      </section>
+          <div className="glass-strong rounded-2xl p-6">
+            <h2 className="mb-3 font-display text-lg font-semibold text-accent-soft">
+              Result &amp; Impact
+            </h2>
+            <p className="text-sm leading-relaxed text-foreground">
+              {caseStudy.result}
+            </p>
+          </div>
+        </section>
+      )}
     </article>
   );
 }

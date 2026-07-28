@@ -1,8 +1,19 @@
+"use client";
+
 import { MapPin } from "lucide-react";
+import useSWR from "swr";
 import Reveal from "./Reveal";
-import { site } from "@/data/portfolio";
+import { site as fallbackSite } from "@/data/portfolio";
+import { siteApi } from "@/lib/api/site";
+import type { SiteConfig } from "@/types/api";
 
 export default function About() {
+  const { data: site = fallbackSite } = useSWR<SiteConfig>(
+    "site",
+    () => siteApi.get(),
+    { revalidateOnFocus: false }
+  );
+
   return (
     <section id="about" aria-label="About me" className="py-24">
       <div className="section-container">
@@ -26,7 +37,11 @@ export default function About() {
           <Reveal delay={0.15} className="lg:col-span-2">
             <div className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-white/[0.02] p-6">
               <div className="flex items-center gap-2 text-sm text-muted">
-                <MapPin size={15} className="text-accent-soft" aria-hidden="true" />
+                <MapPin
+                  size={15}
+                  className="text-accent-soft"
+                  aria-hidden="true"
+                />
                 {site.location}
               </div>
               <div className="flex flex-col gap-2">

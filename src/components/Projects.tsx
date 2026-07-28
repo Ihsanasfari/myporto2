@@ -1,12 +1,34 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight, Check, ExternalLink } from "lucide-react";
+import useSWR from "swr";
 import { GithubIcon } from "./BrandIcons";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import ProjectMockup from "./ProjectMockup";
-import { projects } from "@/data/portfolio";
+import { projects as fallbackProjects } from "@/data/portfolio";
+import { projectsApi } from "@/lib/api/projects";
+import type { Project as ApiProject, Paginated } from "@/types/api";
+import type { ProjectMockup as MockupType } from "@/types";
+
+const VALID_MOCKUPS: MockupType[] = ["ai-chat", "crm", "booking", "portfolio"];
+
+function toMockupType(value: string | null): MockupType {
+  return VALID_MOCKUPS.includes(value as MockupType)
+    ? (value as MockupType)
+    : "portfolio";
+}
 
 export default function Projects() {
+  const { data } = useSWR<Paginated<ApiProject>>(
+    "projects",
+    () => projectsApi.list(1, 100),
+    { revalidateOnFocus: false }
+  );
+
+  const projects = data?.data ?? fallbackProjects;
+
   return (
     <section id="projects" aria-label="Featured projects" className="py-24">
       <div className="section-container">
@@ -23,7 +45,7 @@ export default function Projects() {
               <Reveal key={project.slug} delay={index * 0.08}>
                 <article className="glass group flex h-full flex-col gap-5 rounded-2xl p-6 transition-all duration-300 hover:border-border-strong hover:bg-white/[0.05]">
                   <ProjectMockup
-                    type={project.mockup}
+                    type={toMockupType(project.mockup)}
                     accent={project.accent}
                   />
 
